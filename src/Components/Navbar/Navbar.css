@@ -1,0 +1,13 @@
+ul{
+    list-style: none; 
+    display: flex;
+    justify-content: center;
+}
+ul li{
+    margin: 20px;
+}
+.Header-Container{
+    display: flex;
+    justify-content: space-between;
+    background-color: aqua;
+}
