@@ -9,5 +9,15 @@ ul li{
 .Header-Container{
     display: flex;
     justify-content: space-between;
-    background-color: aqua;
+    background-color: black;
+}
+.Header-Container h1{
+    color: aqua;
+    font-weight: 800px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.Header-Container h2{
+    color: white;
+    font-weight: 300px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
