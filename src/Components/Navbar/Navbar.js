@@ -3,16 +3,16 @@ import '../Navbar/Navbar.css'
 
 const Navbar = () => {
   return (
-    <div className='Header-Container'>
-        <div >
-            <h1>KAARVENS</h1>
-        </div>
-        <ul>
-            <li><h2>Home</h2></li>
-            <li><h2>About</h2></li>
-            <li><h2>Services</h2></li>
-            <li><h2>Contact</h2></li>
-        </ul>
+    <div className='Nav-Container'>
+      <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>Services</li>
+        <li>Contact</li>
+        <li> <a href="">Sign up</a></li>
+        <li> <a href="">Login</a> </li>
+      </ul>
+      
     </div>
   )
 }
