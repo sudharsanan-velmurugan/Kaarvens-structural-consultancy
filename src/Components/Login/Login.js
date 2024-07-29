@@ -1,5 +1,5 @@
 import React from 'react'
-imprt './Login.css'
+import './Login.css'
 import { FaUser, FaLock } from "react-icons/fa";
 const Login = () => {
     return (
@@ -24,7 +24,6 @@ const Login = () => {
                 </div>
 
             </form>
-            </div>
         </div>
     )
 }
