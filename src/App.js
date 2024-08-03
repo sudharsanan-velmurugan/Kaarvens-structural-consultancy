@@ -5,9 +5,9 @@ import Header from './Components/Navbar/Header';
 import SignIn from './Components/Sign In/SignIn';
 function App() {
   return (
-    <div > 
-     <Header/>
+    <div className='App' > 
      <Slideshow/>
+     <Header/>
      <Login/>
      <SignIn/>
      </div>
