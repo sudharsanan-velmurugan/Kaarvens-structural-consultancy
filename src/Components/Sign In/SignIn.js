@@ -20,7 +20,7 @@ const SignIn = () => {
                 </div>
                 <div className="user-mobileno-container">
                 <label>Mobile Number</label>
-                <input type="number" placeholder="Mobile"/>
+                <input type="tel" placeholder="Mobile"/>
                 </div>
                 <div className="user-pwd-container">
                 <label>Enter a Password</label>
@@ -31,7 +31,7 @@ const SignIn = () => {
                 <input type="password" placeholder="Confrim a Password" required/>
                 </div>
                 <div className="signup-checkbox">
-                <label><input type="checkbox"  required/> Agree and Continue</label>
+                <label1><input type="checkbox"  required/> Agree and Continue</label1>
                 </div>
                 <button type="submit">Submit</button>
                 <div className="login-register-link">
