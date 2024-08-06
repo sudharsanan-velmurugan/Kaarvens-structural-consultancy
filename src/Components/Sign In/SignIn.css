@@ -1,13 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,500;1,400;1,500&display=swap');
 
-.signup-page-container{
+.signin-page-container{
     width: 420px;
     background:transparent;
-    color: #fff;
+    border: 2px solid rgba(255,255,255,.2);
+    color: #000000;
     border-radius: 10px;
     padding: 30px 40px;
+    text-align: center;
+    margin: 50px auto;
 }
-.signup-page-container h1{
+.signin-page-container h1{
     font-size: 35px;
     text-align: center;
 }
@@ -26,7 +29,11 @@
 .user-name-container input::placeholder{
     color: #fff;
 }
-.user-mail-container .input{
+.signin-page-container label{
+    display: flex;
+    flex-direction: column;
+}   
+.user-email-container .input{
     width: 100%;
     height: 100%;
     background: transparent;
@@ -56,6 +63,16 @@
 .user-mobile-container input::placeholder{
     color: #fff;
 }
+.signup-checkbox{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin: -15px 0 15px;
+}
+.signup-checkbox label input{
+    accent-color: #fff;
+    margin-right: 4px;
+}
 button{
     width: 100%;
     height: 45px;
@@ -75,7 +92,7 @@ button{
     margin-top: 20px 0 15px;
 }
 .login-register-link p a{
-    color: #fff;
+    color: rebeccapurple;
     text-decoration: none;
     font-weight: 500;
 }

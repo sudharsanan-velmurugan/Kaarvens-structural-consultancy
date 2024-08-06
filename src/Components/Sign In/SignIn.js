@@ -7,26 +7,31 @@ const SignIn = () => {
             <h1>Sign In Page</h1>
             <form >
                 <div className="user-name-container">
+                <label>First Name</label>
                 <input type="text" placeholder="First Name" required/>
                 </div>
-                <div className="iuser-name-container">
+                <div className="user-name-container">
+                <label>Last Name</label>
                 <input type="text" placeholder="Last Name"/>
                 </div>
-                <div className="user-mail-container">
+                <div className="user-email-container">
+                <label>Email id</label>
                 <input type="email" placeholder="Email"/>
                 </div>
                 <div className="user-mobileno-container">
+                <label>Mobile Number</label>
                 <input type="number" placeholder="Mobile"/>
                 </div>
                 <div className="user-pwd-container">
+                <label>Enter a Password</label>
                 <input type="password" placeholder="Enter a Password" required/>
                 </div>
                 <div className="user-pwd-container">
+                <label>Confrim Password</label>
                 <input type="password" placeholder="Confrim a Password" required/>
                 </div>
                 <div className="signup-checkbox">
-                <input type="checkbox"  required/>
-                <label > Agree and Continue</label>
+                <label><input type="checkbox"  required/> Agree and Continue</label>
                 </div>
                 <button type="submit">Submit</button>
                 <div className="login-register-link">
