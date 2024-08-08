@@ -6,6 +6,7 @@ import Header from './Components/Navbar/Header';
 import SignIn from './Components/Sign In/SignIn';
 import Home from './Components/Home/Home';
 import About from './Components/About/About';
+import Reset from './Components/Reset Password/Reset';
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +17,7 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route path='/services' element={<Login />} />
         <Route path='/contact' element={<Login />} />
+        <Route path='/reset' element={<Reset />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signin' element={<SignIn />} />
       </Routes>
