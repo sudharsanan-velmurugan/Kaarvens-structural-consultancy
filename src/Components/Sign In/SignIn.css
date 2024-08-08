@@ -45,7 +45,7 @@
     color: #fff;
     padding:20px 45px 20px 20px;
 }
-.user-mail-container input::placeholder{
+.user-email-container input::placeholder{
     color: #fff;
 }
 .user-mobileno-container .input{
@@ -60,7 +60,7 @@
     color: #fff;
     padding:20px 45px 20px 20px;
 }
-.user-mobile-container input::placeholder{
+.user-mobileno-container input::placeholder{
     color: #fff;
 }
 .signup-checkbox{
