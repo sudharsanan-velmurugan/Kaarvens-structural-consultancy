@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,500;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,100;0,400;0,500;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 .signin-container {
     margin: 40px auto;
@@ -34,8 +36,9 @@
     border: 2px solid rgba(255,255,255,.2);
     border-radius: 30px;
     font-size: 16px;
-    color: #fff;
+    color: #000000;
     padding: 20px 45px 20px 20px;
+    font-family: "PT Serif", serif;
 }
 
 .form-group input::placeholder {
@@ -43,13 +46,15 @@
 }
 
 .form-group input[type="email"]::placeholder {
-    color: #ffdbdb;
+    color: #fff
 }
 
 .form-group label {
     margin-bottom: 8px;
     font-weight: 500;
-    color: #fff;
+    color: #000000;
+    font-family:"Open Sans", sans-serif;
+    font-weight: bold;
 }
 
 .signup-checkbox {
@@ -86,7 +91,7 @@ button {
 }
 
 .login-link a {
-    color: rebeccapurple;
+    color: #fff;
     text-decoration: none;
     font-weight: 500;
 }

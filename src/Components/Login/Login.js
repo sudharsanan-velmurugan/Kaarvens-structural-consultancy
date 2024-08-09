@@ -7,15 +7,17 @@ const Login = () => {
             <h1>Login Page</h1>
             <form>
                 <div className="user-name-container">
+                    <label>User Name</label>
                     <input type="text" placeholder="UserName" required/>
                     <FaUser className="icon"/>
                 </div>
                 <div className="user-password-container">
+                    <label>Password</label>
                     <input type="password" placeholder="Password" required/>
                     <FaLock className="icon"/>
                 </div>
                 <div className="login-checkbox">
-                <label><input type="checkbox" /> Remember me</label>
+                <label1><input type="checkbox" /> Remember me</label1>
                     <a href="">forget password</a>
                 </div>
                 <button type="submit">Log In</button>
