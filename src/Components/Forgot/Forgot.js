@@ -1,7 +1,7 @@
 import React from 'react'
 import './Forgot.css'
 
-export default function Forgot() {
+const Forgot = () => {
   return (
     <div className='forgot-password-container'>
         <h1>Forgot Password</h1>
@@ -15,3 +15,5 @@ export default function Forgot() {
     </div>
   )
 }
+
+export default Forgot

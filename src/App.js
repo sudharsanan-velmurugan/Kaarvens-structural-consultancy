@@ -22,8 +22,8 @@ function App() {
         <Route path='/contact' element={<Contact />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signin' element={<SignIn />} />
-        <Route path='reset' element={<Reset />} />
-        <Route path='forgot' element={<Forgot />} />
+        <Route path='/reset' element={<Reset />} />
+        <Route path='/forgot' element={<Forgot />} />
       </Routes>
     </BrowserRouter>
   );

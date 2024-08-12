@@ -42,11 +42,11 @@
 }
 
 .form-group input::placeholder {
-    color: #fff;
+    color: #000;
 }
 
 .form-group input[type="email"]::placeholder {
-    color: #fff
+    color: #000;
 }
 
 .form-group label {

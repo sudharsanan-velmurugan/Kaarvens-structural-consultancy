@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,500;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner:wght@400..700&display=swap');
+
+.about-page-container{
+    width: 500px;
+    background-color: transparent ;
+    backdrop-filter: blur(2px);
+    color: #000000;
+    padding: 30px 40px;
+    top: 20%;
+    left: 5%;
+    position: absolute;
+}
+.about-page-container h1{
+    text-align: left;
+    font-family:"Edu VIC WA NT Beginner", cursive ;
+    font-weight: 300px;
+}
+.about-page-container p{
+    font-family: "PT Serif", serif;
+    font-style: italic;
+}
+.about-page-container button{
+    width:20%;
+    height: 30px;
+    background: 2px solid rgba(0, 0, 0, .1);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 15px;
+    color: #000;
+    font-weight: 100;
+    margin: auto;
+    justify-content: space-between;
+    margin-left: 10%;
+}
