@@ -4,7 +4,6 @@
 .about-page-container{
     width: 500px;
     background-color: transparent ;
-    backdrop-filter: blur(2px);
     color: #000000;
     padding: 30px 40px;
     top: 20%;
