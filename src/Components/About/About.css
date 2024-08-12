@@ -8,12 +8,15 @@
     padding: 30px 40px;
     top: 20%;
     left: 5%;
-    position: absolute;
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(0, 0, 0, .1);
+    margin: 40px auto;
 }
 .about-page-container h1{
     text-align: left;
     font-family:"Edu VIC WA NT Beginner", cursive ;
     font-weight: 300px;
+    color: rgb(255, 255, 255);
 }
 .about-page-container p{
     font-family: "PT Serif", serif;
