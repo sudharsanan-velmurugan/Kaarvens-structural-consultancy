@@ -5,12 +5,13 @@ import './Home.css'
 
 const Home = () => {
   return (
+    
     <div>
       <About/>
-     <div className='links-container'>
-     <Link className='nav-elements' to="/signin">Sign in</Link>
-     <Link className='nav-elements' to="/login">Login</Link>
-      </div> 
+      <div className='links-container'>
+      <Link className='nav-elements' to="/signin">Sign in</Link>
+      <Link className='nav-elements' to="/login">Login</Link>
+    </div> 
      
     </div>
   )

@@ -14,7 +14,8 @@ const Navbar = () => {
         <li onClick={()=>setLogin(!login)}> <Link className='nav-elements' to="/login">Login</Link> </li>
         { login &&(<><li> <Link className='nav-elements' to="/Forgot">Forgot</Link></li>
         <li> <Link className='nav-elements' to="/Reset">Reset</Link></li>
-        <li> <Link className='nav-elements' to="/signin">Sign in</Link> </li></>)}
+        <li> <Link className='nav-elements' to="/signin">Sign in</Link> </li>
+        <li> <Link className='nav-elements' to="/users">Users</Link> </li></>)}
       </ul>
 
     </div>
