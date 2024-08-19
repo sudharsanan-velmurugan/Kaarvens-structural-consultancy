@@ -12,8 +12,8 @@ export const UserSlice = createSlice({
           state.users.push(action.payload)  
         },
         deleteUser:(state,action)=>{
-          state.users.filter((user)=>{
-            return user.name!=action.payload.name
+         state.users= state.users.filter((user,index)=>{
+            return index !== action.payload
           })
         }
     }
