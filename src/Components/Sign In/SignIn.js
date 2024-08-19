@@ -11,12 +11,12 @@ const SignIn = () => {
   const [pass, setPass] = useState('')
   const handleSignin=(e)=>{
     e.preventDefault()
-    dispatch(addUser([
+    dispatch(addUser(
       {
         name:name,
         pass:pass,
       }
-    ]))
+    ))
     alert('You have successfully registered')
     navigate('/login')
   }

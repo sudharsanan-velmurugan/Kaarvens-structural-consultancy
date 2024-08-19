@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Login.css'
 import { FaUser, FaLock } from "react-icons/fa";
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 const Login = () => {
     const users = useSelector((state) => state.userInfo.users)
@@ -12,9 +12,9 @@ const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault()
         const userFound = users.find((user) => user.name === name && user.pass === pass)
-        if (users.name === 'admin' & users.pass === 'admin@123') {
+        if (name === 'admin' & pass === 'admin@123') {
             alert("you logged in as a admin")
-            navigate('/Services')
+            navigate('/users')
         }
         else if (userFound) {
             alert('You are logged in as a user')
