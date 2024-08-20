@@ -9,7 +9,7 @@ export const LoginSlice = createSlice(
         name:"isLogin",
         initialState,
         reducers:{
-            setLogin:(state,action)=>{
+            setLogin:(state)=>{
                 state.isLogin =!state.isLogin
             }
         }

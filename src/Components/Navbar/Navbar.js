@@ -1,9 +1,17 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../Navbar/Navbar.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { setLogin } from '../../Slice/LoginSlice'
 
 const Navbar = () => {
-  const [login,setLogin]=useState(true)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const isLoginFalse = useSelector((state) => state.loginInfo.isLogin)
+  const handleLogout = () => {
+    dispatch(setLogin())
+    navigate('/')
+  }
   return (
     <div className='Nav-Container'>
       <ul>
@@ -11,12 +19,10 @@ const Navbar = () => {
         <li> <Link className='nav-elements' to="/About">About</Link></li>
         <li> <Link className='nav-elements' to="/Services">Services</Link></li>
         <li> <Link className='nav-elements' to="/Contact">Contact</Link></li>
-        <li onClick={()=>setLogin(!login)}> <Link className='nav-elements' to="/login">Login</Link> </li>
-        { login &&(<><li> <Link className='nav-elements' to="/Forgot">Forgot</Link></li>
-        <li> <Link className='nav-elements' to="/Reset">Reset</Link></li>
-        <li> <Link className='nav-elements' to="/signin">Sign in</Link> </li>
-        {/* <li> <Link className='nav-elements' to="/users">Users</Link> </li> */}
-        </>)}
+        {isLoginFalse && <> (<li> <Link className='nav-elements' to="/Forgot">Forgot</Link></li>
+          <li> <Link className='nav-elements' to="/Reset">Reset</Link></li>
+          <li> <button className='nav-elements' onClick={handleLogout}>Logut</button></li>)
+        </>}
       </ul>
 
     </div>
