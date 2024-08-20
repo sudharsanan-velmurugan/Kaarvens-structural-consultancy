@@ -14,6 +14,7 @@ const Login = () => {
         const userFound = users.find((user) => user.name === name && user.pass === pass)
         if (name === 'admin' & pass === 'admin@123') {
             alert("you logged in as a admin")
+
             navigate('/users')
         }
         else if (userFound) {
