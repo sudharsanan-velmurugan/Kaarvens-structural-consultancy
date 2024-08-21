@@ -15,7 +15,6 @@ const Navbar = () => {
   // Handle logout functionality
   const handleLogout = () => {
     dispatch(setLogout()) // Dispatching logout action to reset state
-    console.log("userbool-",isUserLogin,"adminbool-",isAdminLogin);
     
     navigate('/') // Navigate to homepage
   }
