@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import './SignIn.css';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../../Slice/UserSlice';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 
 const SignIn = () => {
   const dispatch = useDispatch()
@@ -54,7 +54,7 @@ const SignIn = () => {
         </div>
         <button type="submit" onClick={handleSignin} >Submit</button>
         <div className="login-link">
-          <p>Already have an account? <a href="#">Login here</a></p>
+          <p>Already have an account? <Link to='/login' >Login here</Link></p>
         </div>
       </form>
     </div>
