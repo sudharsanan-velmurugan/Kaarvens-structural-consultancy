@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './Login.css'
 import { FaUser, FaLock } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate ,Link} from 'react-router-dom';
 import { setAdminLogin,setUserLogin } from '../../Slice/LoginSlice';
 const Login = () => {
     const users = useSelector((state) => state.userInfo.users)
@@ -48,7 +48,7 @@ const Login = () => {
                 </div>
                 <button type="submit" onClick={handleLogin}>Log In</button>
                 <div className="login-register-link">
-                    <p>Don't have any account? <a href="#">Sign In</a></p>
+                    <p>Don't have any account? <Link to='/signin' >Sign In</Link></p>
                 </div>
 
             </form>

@@ -7,16 +7,12 @@ import { setLogout } from '../../Slice/LoginSlice'
 const Navbar = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
-  // Fetching the login states from the Redux store
   const isUserLogin = useSelector((state) => state.loginInfo.isUserLogin)
   const isAdminLogin = useSelector((state) => state.loginInfo.isAdminLogin)
 
-  // Handle logout functionality
   const handleLogout = () => {
-    dispatch(setLogout()) // Dispatching logout action to reset state
-    
-    navigate('/') // Navigate to homepage
+    dispatch(setLogout())   
+    navigate('/') 
   }
 
   return (
@@ -26,13 +22,9 @@ const Navbar = () => {
         <li><Link className='nav-elements' to="/About">About</Link></li>
         <li><Link className='nav-elements' to="/Services">Services</Link></li>
         <li><Link className='nav-elements' to="/Contact">Contact</Link></li>
-
-        {/* Conditionally render the Users link for Admin */}
         {isAdminLogin && (
           <li><Link className='nav-elements' to="/users">Users</Link></li>
         )}
-
-        {/* Conditionally render the Forgot, Reset, and Logout buttons */}
         {(isUserLogin || isAdminLogin) && (
           <>
             <li><Link className='nav-elements' to="/Forgot">Forgot</Link></li>
