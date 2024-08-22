@@ -1,6 +1,7 @@
 import React from 'react'
 import './Reset.css'
 
+
 const Reset = () => {
   return (
     <div className='reset-page-container'>
