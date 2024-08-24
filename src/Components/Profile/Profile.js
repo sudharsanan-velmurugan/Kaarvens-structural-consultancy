@@ -1,19 +1,22 @@
 import React from 'react'
 import profileImg from '../../Images/profile.jpg'
+import './Profile.css'
 const Profile = () => {
   return (
     <div>
-       <h1>Profile</h1> 
-        <div>
+       <div className='profile-page-container'>
             <img src={profileImg} alt="Profile img" />
-        </div>
-        <div>
-            <p>First name</p>
-            <p>Last name name</p>
-            {/* add input box */}
-        </div>
-        <div>
-            <p>Email</p>
+            <label>First Name</label>
+            <input type='text'></input>
+            <label>Last Name</label>
+            <input type='text'></input>
+            <label>Email</label>
+            <input type='email'></input>
+            <label>Mobile No</label>
+            <input type='tel'></input>
+            <p>Change Password</p>
+            <button type='Submit'>Logout</button>
+
         </div>
     </div>
   )
