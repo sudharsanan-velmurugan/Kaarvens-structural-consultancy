@@ -29,6 +29,7 @@ const Navbar = () => {
           <>
             <li><Link className='nav-elements' to="/Forgot">Forgot</Link></li>
             <li><Link className='nav-elements' to="/Reset">Reset</Link></li>
+            <li><Link className='nav-elements' to="/profile">Profile</Link></li>
             <li>
               <button className='nav-elements' onClick={handleLogout}>Logout</button>
             </li>
