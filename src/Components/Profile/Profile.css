@@ -1,35 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap');
 
 .profile-page-container{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    margin: 40px auto;
+    width:700px;
     background: transparent;
     border: 2px solid rgba(255,255,255,.2);
+    backdrop-filter: blur(5px);
+    text-align: center;
+    justify-content: center;
+    margin: 40px auto;
     border-radius: 10px;
     padding: 30px 40px;
-    backdrop-filter: blur(5px);
-    width: 40%;
 }
-.profile-page-container input{
-    width: 80%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    border: 2px solid rgba(255,255,255,.2);
-    border-radius: 30px;
-    font-size: 16px;
-    color: #000000;
-    padding: 20px 45px 20px 20px;
+.profile-page-container h1{
+    font-family: "Lobster", sans-serif;
+    text-decoration: underline;
 }
-.profile-page-container img{
-    border-radius: 60%;
+.profile-page-image img{
+    border-radius: 50%;
     width: 200px;
 }
+.profile-page-fname, .profile-page-lname, .profile-page-email, .profile-page-mobileno{
+    font-family: "DM Serif Text", serif;
+    font-weight: 600px;
+}
+.profile-page-fname input, .profile-page-mobileno input, .profile-page-lname input, .profile-page-email input{
+    border-radius: 10px;
+    border: 2px solid rgba(255,255,255,.2);
+    width: 300px;
+    margin-left: 5%;
+    margin-bottom: 20px;
+}
 .profile-page-container p{
-    color: #000;
+    font-family: "DM Serif Text", serif;
 }
 .profile-page-container p:hover{
-     text-decoration: underline;
+    text-decoration: underline;
+    color:dodgerblue;
+    font-weight: bold;
+}
+.profile-page-container button{
+    width: 300px;
+    background-color: antiquewhite;
 }
