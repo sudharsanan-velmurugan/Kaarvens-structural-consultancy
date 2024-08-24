@@ -13,7 +13,7 @@
         <div className='users-page-container'>
                 {users.length > 0 ? (
                     users.map((user, index) => (
-                        <div key={index}>
+                        <div key={index} className='users-elemts'>
                             <p>Name: {user.name}</p>
                             <p>Password: {user.pass}</p>
                             <button onClick={()=>removeUser(index)}>Delete user</button>
