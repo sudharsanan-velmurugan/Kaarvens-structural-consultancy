@@ -1,5 +1,6 @@
 import React from 'react'
 import profileImg from '../../Images/profile.jpg'
+import { Link } from 'react-router-dom'
 import './Profile.css'
 const Profile = () => {
   return (
@@ -17,14 +18,19 @@ const Profile = () => {
             <input type='text'></input>
         </div>
         <div className='profile-page-email'>
-            <label>Email Id :   </label>
+            <label>{" "}Email Id :   </label>
             <input type='email'></input>
         </div>
         <div className='profile-page-mobileno'>
           <label>Mobile No :</label>
           <input type='tel'></input>
         </div>
-        <p>Change Password</p>
+        <div>
+        <Link className='profile-page-password' to="/Reset">Change Password</Link>
+        </div>
+        <div className='profile-page-save'>
+        <button type='submit'>Save Changes</button>
+        </div>
         <button type='submit'>Logout</button>
     </div>
   )

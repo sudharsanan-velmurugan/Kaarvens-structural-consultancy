@@ -19,15 +19,18 @@
 .profile-page-image img{
     border-radius: 50%;
     width: 200px;
+    margin-bottom: 20px;
 }
 .profile-page-fname, .profile-page-lname, .profile-page-email, .profile-page-mobileno{
     font-family: "DM Serif Text", serif;
     font-weight: 600px;
+    padding:10px;
 }
 .profile-page-fname input, .profile-page-mobileno input, .profile-page-lname input, .profile-page-email input{
     border-radius: 10px;
     border: 2px solid rgba(255,255,255,.2);
-    width: 300px;
+    width: 200px;
+    height: 30px;
     margin-left: 5%;
     margin-bottom: 20px;
 }
@@ -39,7 +42,26 @@
     color:dodgerblue;
     font-weight: bold;
 }
-.profile-page-container button{
-    width: 300px;
-    background-color: antiquewhite;
+.profile-page-password{
+    color: deepskyblue;
+    text-decoration: underline;
+    font-weight: bold;
 }
+.profile-page-container button{
+    width: 200px;
+    background-color: #fff;
+    color: black;
+}
+.profile-page-save button{
+    width: 150px;
+    background-color: #fff;
+    border-radius: 5px;
+    color: black;
+}
+.profile-page-save button:hover{
+    background-color: rgba(255,255,255,.5);
+}
+.profile-page-container button:hover{
+    background-color: rgba(255,255,255,.5);
+}
+
