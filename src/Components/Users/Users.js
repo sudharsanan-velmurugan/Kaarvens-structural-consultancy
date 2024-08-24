@@ -1,4 +1,5 @@
     import React from 'react'
+    import './Users.css'
     import { useDispatch, useSelector } from 'react-redux'
     import { deleteUser } from '../../Slice/UserSlice'
 
@@ -9,7 +10,7 @@
             dispatch(deleteUser(index)) 
         }
     return (
-        <div>
+        <div className='users-page-container'>
                 {users.length > 0 ? (
                     users.map((user, index) => (
                         <div key={index}>
