@@ -2,11 +2,13 @@ import React from 'react'
 import About from '../About/About'
 import { Link } from 'react-router-dom'
 import './Home.css'
+import Slideshow from '../../Background/Slideshow'
 
 const Home = () => {
   return (
-    
+  
     <div>
+      <Slideshow/>
       <About/>
       <div className='links-container'>
       <Link className='nav-elements' to="/signin">Sign in</Link>

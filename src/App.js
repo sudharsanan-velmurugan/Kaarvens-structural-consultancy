@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Slideshow from './Background/Slideshow';
 import Login from './Components/Login/Login';
 import Header from './Components/Navbar/Header';
@@ -8,18 +8,31 @@ import Home from './Components/Home/Home';
 import About from './Components/About/About';
 import Reset from './Components/Reset/Reset';
 import Forgot from './Components/Forgot/Forgot';
-import Service from './Components/Service/Service'
-import Contact from './Components/Contact/Contact'
+import Service from './Components/Service/Service';
+import Contact from './Components/Contact/Contact';
 import { Provider } from 'react-redux';
 import store from './Store/UserStore';
 import Users from './Components/Users/Users';
 import Profile from './Components/Profile/Profile';
+
 function App() {
   return (
     <Provider store={store}>
-    <BrowserRouter>
-      <Header />
-      <Slideshow />
+      <BrowserRouter>
+        <AppContent />
+      </BrowserRouter>
+    </Provider>
+  );
+}
+
+function AppContent() {
+  const location = useLocation();
+
+  return (
+    <>
+      {/* Conditionally render Header only on non-home pages */}
+      {location.pathname !== '/' && <Header />}
+
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
@@ -32,8 +45,7 @@ function App() {
         <Route path='/users' element={<Users />} />
         <Route path='/profile' element={<Profile />} />
       </Routes>
-    </BrowserRouter>
-    </Provider>
+    </>
   );
 }
 
