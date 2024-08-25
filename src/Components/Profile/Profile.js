@@ -1,20 +1,37 @@
 import React from 'react'
 import profileImg from '../../Images/profile.jpg'
+import { Link } from 'react-router-dom'
+import './Profile.css'
 const Profile = () => {
   return (
-    <div>
+    <div className='profile-page-container'>
        <h1>Profile</h1> 
-        <div>
+        <div className='profile-page-image'>
             <img src={profileImg} alt="Profile img" />
         </div>
-        <div>
-            <p>First name</p>
-            <p>Last name name</p>
-            {/* add input box */}
+        <div className='profile-page-fname'>
+            <label>First Name :</label>
+            <input type='text'></input>
+        </div>
+        <div className='profile-page-lname'>
+            <label>Last Name :</label>
+            <input type='text'></input>
+        </div>
+        <div className='profile-page-email'>
+            <label>{" "}Email Id :   </label>
+            <input type='email'></input>
+        </div>
+        <div className='profile-page-mobileno'>
+          <label>Mobile No :</label>
+          <input type='tel'></input>
         </div>
         <div>
-            <p>Email</p>
+        <Link className='profile-page-password' to="/Reset">Change Password</Link>
         </div>
+        <div className='profile-page-save'>
+        <button type='submit'>Save Changes</button>
+        </div>
+        <button type='submit'>Logout</button>
     </div>
   )
 }
