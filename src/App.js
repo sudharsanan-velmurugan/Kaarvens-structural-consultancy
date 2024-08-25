@@ -8,7 +8,7 @@ import Home from './Components/Home/Home';
 import About from './Components/About/About';
 import Reset from './Components/Reset/Reset';
 import Forgot from './Components/Forgot/Forgot';
-import Service from './Components/Service/Service';
+import Service from './Components/Service/Projects';
 import Contact from './Components/Contact/Contact';
 import { Provider } from 'react-redux';
 import store from './Store/UserStore';
@@ -36,7 +36,7 @@ function AppContent() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
-        <Route path='/services' element={<Service />} />
+        <Route path='/Projects' element={<Service />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signin' element={<SignIn />} />

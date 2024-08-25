@@ -6,7 +6,6 @@ import Slideshow from '../../Background/Slideshow'
 
 const Home = () => {
   return (
-  
     <div>
       <Slideshow/>
       <About/>

@@ -1,8 +1,16 @@
 import React from 'react'
 import profileImg from '../../Images/profile.jpg'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 import './Profile.css'
+import { setLogout } from '../../Slice/LoginSlice'
+import { useDispatch } from 'react-redux'
 const Profile = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const handleLogout = () => {
+    dispatch(setLogout())   
+    navigate('/') 
+  }
   return (
     <div className='profile-page-container'>
        <h1>Profile</h1> 
@@ -31,7 +39,7 @@ const Profile = () => {
         <div className='profile-page-save'>
         <button type='submit'>Save Changes</button>
         </div>
-        <button type='submit'>Logout</button>
+        <button className='profile-btn' onClick={handleLogout}>Logout</button>
     </div>
   )
 }

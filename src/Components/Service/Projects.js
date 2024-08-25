@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Service = () => {
+const Projects = () => {
   return (
     <div>
       <h1>You have successfully logged In</h1>
@@ -12,4 +12,4 @@ const Service = () => {
   )
 }
 
-export default Service
+export default Projects
