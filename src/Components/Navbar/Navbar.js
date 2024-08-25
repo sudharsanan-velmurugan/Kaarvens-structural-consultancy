@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import '../Navbar/Navbar.css'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 const Navbar = () => {
   
@@ -25,9 +25,6 @@ const Navbar = () => {
             <li><Link className='nav-elements' to="/Forgot">Forgot</Link></li>
             <li><Link className='nav-elements' to="/Reset">Reset</Link></li>
             <li><Link className='nav-elements' to="/profile">Profile</Link></li>
-            <li>
-             
-            </li>
           </>
         )}
       </ul>
