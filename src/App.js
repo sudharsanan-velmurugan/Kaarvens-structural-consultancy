@@ -8,12 +8,12 @@ import Home from './Components/Home/Home';
 import About from './Components/About/About';
 import Reset from './Components/Reset/Reset';
 import Forgot from './Components/Forgot/Forgot';
-import Service from './Components/Service/Projects';
 import Contact from './Components/Contact/Contact';
 import { Provider } from 'react-redux';
 import store from './Store/UserStore';
 import Users from './Components/Users/Users';
 import Profile from './Components/Profile/Profile';
+import Projects from './Components/Service/Projects';
 
 function App() {
   return (
@@ -27,16 +27,19 @@ function App() {
 
 function AppContent() {
   const location = useLocation();
-
+  const pathsToHideHeader = ['/']
+  const pathsToHideSlideshow = ['/projects','/contact','/about','/users','/profile']
   return (
     <>
+          
       {/* Conditionally render Header only on non-home pages */}
-      {location.pathname !== '/' && <Header />}
+      {!pathsToHideHeader.includes(location.pathname) && <Header />}
+      {!pathsToHideSlideshow.includes(location.pathname) && <Slideshow/>}
 
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
-        <Route path='/Projects' element={<Service />} />
+        <Route path='/Projects' element={<Projects/>} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signin' element={<SignIn />} />

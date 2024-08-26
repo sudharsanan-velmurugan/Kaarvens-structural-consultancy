@@ -7,23 +7,20 @@ const Navbar = () => {
   
   const isUserLogin = useSelector((state) => state.loginInfo.isUserLogin)
   const isAdminLogin = useSelector((state) => state.loginInfo.isAdminLogin)
-
- 
-
   return (
     <div className='Nav-Container'>
       <ul>
         <li><Link className='nav-elements' to="/">Home</Link></li>
-        <li><Link className='nav-elements' to="/About">About</Link></li>
-        <li><Link className='nav-elements' to="/Projects">Projects</Link></li>
-        <li><Link className='nav-elements' to="/Contact">Contact</Link></li>
+        <li><Link className='nav-elements' to="/about">About</Link></li>
+        <li><Link className='nav-elements' to="/projects">Projects</Link></li>
+        <li><Link className='nav-elements' to="/contact">Contact</Link></li>
         {isAdminLogin && (
           <li><Link className='nav-elements' to="/users">Users</Link></li>
         )}
         {(isUserLogin || isAdminLogin) && (
           <>
-            <li><Link className='nav-elements' to="/Forgot">Forgot</Link></li>
-            <li><Link className='nav-elements' to="/Reset">Reset</Link></li>
+            <li><Link className='nav-elements' to="/forgot">Forgot</Link></li>
+            <li><Link className='nav-elements' to="/reset">Reset</Link></li>
             <li><Link className='nav-elements' to="/profile">Profile</Link></li>
           </>
         )}

@@ -7,13 +7,11 @@ import Slideshow from '../../Background/Slideshow'
 const Home = () => {
   return (
     <div>
-      <Slideshow/>
-      <About/>
+      <About />
       <div className='links-container'>
-      <Link className='nav-elements' to="/signin">Sign in</Link>
-      <Link className='nav-elements' to="/login">Login</Link>
-    </div> 
-     
+        <Link className='nav-elements' to="/signin">Sign in</Link>
+        <Link className='nav-elements' to="/login">Login</Link>
+      </div>
     </div>
   )
 }
