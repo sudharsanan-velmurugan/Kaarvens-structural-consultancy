@@ -6,10 +6,10 @@
     background-color: transparent ;
     color: #000000;
     padding: 30px 40px;
-    top: 20%;
-    left: 5%;
+    margin: 5% 5%;
     backdrop-filter: blur(5px);
     border: 2px solid rgba(0, 0, 0, .1);
+    border-radius: 10px;
 }
 .about-page-container h1{
     text-align: left;
