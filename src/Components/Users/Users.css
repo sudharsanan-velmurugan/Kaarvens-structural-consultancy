@@ -9,6 +9,7 @@
     margin: 10px auto;
     display: flex;
     flex-direction: column;
+    background-color: aqua;
 }
 .users-page-container p{
     font-family: "Pacifico", cursive;
