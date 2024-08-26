@@ -10,19 +10,19 @@
             dispatch(deleteUser(index)) 
         }
     return (
-        <div className='users-page-container'>
+        <section className='users-page-container'>
                 {users.length > 0 ? (
                     users.map((user, index) => (
-                        <div key={index} className='users-elemts'>
+                        <div key={index} className='users-elements'>
                             <p>Name: {user.name}</p>
                             <p>Password: {user.pass}</p>
                             <button onClick={()=>removeUser(index)}>Delete user</button>
                         </div>
                     ))
                 ) : (
-                    <p>No users found</p>
+                    <p className='users-elements'>No users found</p>
                 )}
-            </div>
+            </section>
     )
     }
 

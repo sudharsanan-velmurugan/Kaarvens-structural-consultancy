@@ -1,28 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 .users-page-container{
-    width: 300px;
-    padding:30px;
     text-align: center;
-    border-radius: 10px;
-    border: 2px solid rgba(0,0,0,.2);
-    margin: 10px auto;
+    margin: 0 auto;
+    width: 100%;
+    min-height: 87vh;
+    background-color:rgb(196, 200, 203);
     display: flex;
     flex-direction: column;
-    background-color: aqua;
 }
 .users-page-container p{
     font-family: "Pacifico", cursive;
     font-weight: 300;
-    width: 150px; 
 }
 .users-page-container button{
     background-color: #fff;
     border-radius: 10px;
-    width: 100px;
     font-family:'Times New Roman', Times, serif ;
 }
-.users-elemts{
+.users-elements{
     margin: 20px;
-    background-color: aquamarine;
+    background-color: rgb(127, 255, 244);
+    width: 150px;
+    height: 150px;
+    padding: 30px;
+    border-radius: 5px;
 }

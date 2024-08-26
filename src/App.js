@@ -27,19 +27,17 @@ function App() {
 
 function AppContent() {
   const location = useLocation();
-  const pathsToHideHeader = ['/']
-  const pathsToHideSlideshow = ['/projects','/contact','/about','/users','/profile']
+  const pathsToHideHeader = ['/', '/login', '/signin', '/reset', '/forget']
+  const pathsToHideSlideshow = ['/projects', '/contact', '/about', '/users', '/profile']
   return (
     <>
-          
-      {/* Conditionally render Header only on non-home pages */}
       {!pathsToHideHeader.includes(location.pathname) && <Header />}
-      {!pathsToHideSlideshow.includes(location.pathname) && <Slideshow/>}
+      {!pathsToHideSlideshow.includes(location.pathname) && <Slideshow />}
 
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
-        <Route path='/Projects' element={<Projects/>} />
+        <Route path='/Projects' element={<Projects />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signin' element={<SignIn />} />
