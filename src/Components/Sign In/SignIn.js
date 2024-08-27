@@ -1,22 +1,40 @@
 import React,{useState} from 'react';
 import './SignIn.css';
 import { useDispatch } from 'react-redux';
-import { addUser } from '../../Slice/UserSlice';
+import { addUser, setLoggedInUser } from '../../Slice/UserSlice';
 import { useNavigate,Link } from 'react-router-dom';
 
 const SignIn = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const [name, setName] = useState('')
-  const [pass, setPass] = useState('')
+  const [formInput, setFormInput] = useState({
+    firstName:'',
+    lastName:'',
+    email:'',
+    mobile:'',
+    password:'',
+
+  })
+  const handleInputs=(e)=>{
+    const {name,value} = e.target
+    setFormInput((curr)=>({
+      ...curr,
+      [name]:value
+    }))
+  }
   const handleSignin=(e)=>{
+    const {firstName,lastName,email,mobile,password} =formInput
     e.preventDefault()
     dispatch(addUser(
       {
-        name:name,
-        pass:pass,
+        firstName:firstName,
+        lastName:lastName,
+        email:email,
+        mobile:mobile,
+        password:password,
       }
     ))
+    dispatch(setLoggedInUser(email))
     alert('You have successfully registered')
     navigate('/login')
   }
@@ -26,27 +44,27 @@ const SignIn = () => {
       <form>
         <div className="form-group">
           <label>First Name</label>
-          <input type="text" placeholder="First Name" onChange={(e)=>setName(e.target.value)} required />
+          <input type="text" placeholder="First Name" name='firstName' value={formInput.firstName} onChange={handleInputs} required />
         </div>
         <div className="form-group">
           <label>Last Name</label>
-          <input type="text" placeholder="Last Name" />
+          <input type="text" placeholder="Last Name" name='lastName' value={formInput.lastName} onChange={handleInputs} />
         </div>
         <div className="form-group">
           <label>Email</label>
-          <input type="email" placeholder="Email" required />
+          <input type="email" placeholder="Email" name='email' value={formInput.email} onChange={handleInputs} required />
         </div>
         <div className="form-group">
           <label>Mobile Number</label>
-          <input type="tel" placeholder="Mobile" />
+          <input type="tel" placeholder="Mobile" name='mobile' value={formInput.mobile} onChange={handleInputs} />
         </div>
         <div className="form-group">
           <label>Password</label>
-          <input type="password" placeholder="Enter a Password"  required />
+          <input type="password" name='pass' placeholder="Enter a Password"  required />
         </div>
         <div className="form-group">
           <label>Confirm Password</label>
-          <input type="password" placeholder="Confirm Password" onChange={(e)=>setPass(e.target.value)} required />
+          <input type="password" placeholder="Confirm Password" name='password' value={formInput.password} onChange={handleInputs} required />
         </div>
         <div className="signup-checkbox">
           <input type="checkbox" required />

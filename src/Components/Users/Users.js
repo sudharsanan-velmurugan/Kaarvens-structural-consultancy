@@ -14,8 +14,10 @@
                 {users.length > 0 ? (
                     users.map((user, index) => (
                         <div key={index} className='users-elements'>
-                            <p>Name: {user.name}</p>
-                            <p>Password: {user.pass}</p>
+                            <p>Name: {user.firstName}</p>
+                            <p>Email: {user.email}</p>
+                            <p>Mobile: {user.mobile}</p>
+                            <p>Password: {user.password}</p>
                             <button onClick={()=>removeUser(index)}>Delete user</button>
                         </div>
                     ))

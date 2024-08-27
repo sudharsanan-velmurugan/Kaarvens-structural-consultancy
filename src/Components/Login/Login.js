@@ -12,7 +12,7 @@ const Login = () => {
     const [pass, setPass] = useState('')
     const handleLogin = (e) => {
         e.preventDefault()
-        const userFound = users.find((user) => user.name === name && user.pass === pass)
+        const userFound = users.find((user) => user.firstName === name && user.password === pass)
         if (name === 'admin' & pass === 'admin@123') {
             alert("you logged in as a admin")
             dispatch(setAdminLogin())
