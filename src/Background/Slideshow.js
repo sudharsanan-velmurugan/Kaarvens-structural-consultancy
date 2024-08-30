@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import './Slideshow.css';
 
 const images = [
-    require('../KaarvenssBGImages/KaarvensBG-1.jpg'),
-    require('../KaarvenssBGImages/KaarvensBG-2.jpg'),
-    require('../KaarvenssBGImages/KaarvensBG-3.jpg'),
-    require('../KaarvenssBGImages/KaarvensBG-4.jpg'),
-    require('../KaarvenssBGImages/KaarvensBG-5.jpg'),
+    require('../KaarvensBGImages/KaarvensBG-1.jpg'),
+    require('../KaarvensBGImages/KaarvensBG-2.jpg'),
+    require('../KaarvensBGImages/KaarvensBG-3.jpg'),
+    require('../KaarvensBGImages/KaarvensBG-4.jpg'),
+    require('../KaarvensBGImages/KaarvensBG-5.jpg'),
 ];
 
 const Slideshow = () => {
