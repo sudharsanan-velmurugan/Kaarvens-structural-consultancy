@@ -1,0 +1,12 @@
+.project-header{
+    display: flex;
+    justify-content:start;
+    align-items: center;
+    margin: 40px 20px;
+    gap: 40px;
+}
+.project-header button{
+    width: 200px;
+    background-color: aqua;
+    border: none;
+}

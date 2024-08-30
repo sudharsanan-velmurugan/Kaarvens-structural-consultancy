@@ -13,7 +13,7 @@ import { Provider } from 'react-redux';
 import store from './Store/UserStore';
 import Users from './Components/Users/Users';
 import Profile from './Components/Profile/Profile';
-import Projects from './Components/Service/Projects';
+import Projects from './Components/Projects/Projects';
 
 function App() {
   return (
@@ -37,7 +37,7 @@ function AppContent() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
-        <Route path='/Projects' element={<Projects />} />
+        <Route path='/projects' element={<Projects />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signin' element={<SignIn />} />
