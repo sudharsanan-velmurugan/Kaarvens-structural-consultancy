@@ -22,7 +22,7 @@ const Projects = () => {
 
   useEffect(getProjects, []);
 
-  function ProjectHead() {
+  function TableHead() {
     return (
       <thead>
         <tr>
@@ -40,7 +40,7 @@ const Projects = () => {
       </thead>
     )
   }
-  function ProjectBody() {
+  function TableBody() {
     return (
       <tbody>
         {projects.map((project, index) => (
@@ -87,8 +87,8 @@ const Projects = () => {
         
       </div>
       <table className='project-body'>
-          <ProjectHead/>
-          <ProjectBody/>
+          <TableHead/>
+          <TableBody/>
       </table>
     </div>
   );
