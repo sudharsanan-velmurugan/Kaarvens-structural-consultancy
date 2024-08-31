@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Projects.css'
 const Projects = () => {
+  // {to run the server we need to type this command : "npx json-server --watch db.json --port 4000" in this path "\Kaarvens-structural-consultancy\Projects-API">}
   const [projects, setProjects] = useState([]);
-
   // Fetch projects from API
   function getProjects() {
     fetch('http://localhost:4000/projects')
@@ -68,6 +68,7 @@ const Projects = () => {
               <td>{drawing.revision || '-'}</td>
               <td>
                 <button>Edit</button>
+                <button>Delete</button>
               </td>
             </tr>
           ))
