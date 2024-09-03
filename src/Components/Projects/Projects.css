@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 .project-header{
     display: flex;
-    justify-content:start;
+    justify-content:center;
     align-items: center;
     margin: 40px 20px;
     gap: 40px;
@@ -21,4 +22,21 @@
 .tablebody{
     font-family: "Lobster", sans-serif;
     text-align: center;
+}
+.project-container{
+    text-align: center;
+}
+.project-container h2{
+    color: rgb(7,7,7);
+    font-family: "Kaushan Script", cursive;
+    text-decoration: underline;
+    font-weight: 900;
+}
+.project-body{
+    margin: auto;
+    border: 1px solid rgb(224, 216, 216);
+}
+.tablehead th{
+    border: 1px solid rgb(7,7,7);
+    margin: auto;
 }
