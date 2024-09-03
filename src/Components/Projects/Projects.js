@@ -24,9 +24,9 @@ const Projects = () => {
 
   function TableHead() {
     return (
-      <thead>
+      <thead className='tablehead'>
         <tr>
-          <th>ID</th>
+          <th>Id</th>
           <th>Job No</th>
           <th>Project Name</th>
           <th>Architect Name</th>
@@ -42,7 +42,7 @@ const Projects = () => {
   }
   function TableBody() {
     return (
-      <tbody>
+      <tbody className='tablebody'>
         {projects.map((project, index) => (
           project.drawings.map((drawing, dIndex) => (
             <tr key={`${index}-${dIndex}`}>
@@ -58,8 +58,8 @@ const Projects = () => {
                   <img
                     src={`http://localhost:4000/${project['project-image']}`}
                     alt={project['project-name']}
-                    width='300px'
-                    height="200px"
+                    width='100px'
+                    height="75px"
                   />
                 ) : ''}
               </td>

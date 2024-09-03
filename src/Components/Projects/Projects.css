@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 .project-header{
     display: flex;
     justify-content:start;
@@ -9,4 +11,14 @@
     width: 200px;
     background-color: aqua;
     border: none;
+}
+.tablehead{
+    display: space-between;
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    background-color: aquamarine;
+}
+.tablebody{
+    font-family: "Lobster", sans-serif;
+    text-align: center;
 }
