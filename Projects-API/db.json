@@ -6,7 +6,6 @@
 			"project-name": "Vikram Residence",
 			"architect-name": "Cubism",
 			"site-location": "",
-			"project-image": "/images/projimg1.jpg",
 			"drawings": [
 				{
 					"drawing-name": "Structural Scheme Drawing",
@@ -31,7 +30,6 @@
 			"project-name": "Karthik Residence",
 			"architect-name": "ARE Studio (Ar.Sabari)",
 			"site-location": "",
-			"project-image": "/images/projimg2.jpg",
 			"drawings": [
 				{
 					"drawing-name": "Structural Scheme Drawing",
@@ -96,7 +94,6 @@
 			"project-name": "Selvakumar & Yasodha Residence @ Coimbatore",
 			"architect-name": "Purism (Ar.Mohanraj)",
 			"site-location": "Coimbatore",
-			"project-image": "/images/projimg3.jpg",
 			"drawings": [
 				{
 					"drawing-name": "Structural Scheme Drawing",
@@ -166,7 +163,6 @@
 			"project-name": "Madurai Residence",
 			"architect-name": "Cadence",
 			"site-location": "Madurai",
-			"project-image": "/images/projimg4.jpg",
 			"drawings": [
 				{
 					"drawing-name": "Structural Scheme Drawing",

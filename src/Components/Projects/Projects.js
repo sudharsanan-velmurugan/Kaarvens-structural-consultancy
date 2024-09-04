@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FaTrash,FaPen } from 'react-icons/fa';
 import './Projects.css'
 const Projects = () => {
   // {to run the server we need to type this command : "npx json-server --watch db.json --port 4000" in this path "\Kaarvens-structural-consultancy\Projects-API">}
@@ -31,7 +32,6 @@ const Projects = () => {
           <th>Project Name</th>
           <th>Architect Name</th>
           <th>Site Location</th>
-          <th>Image</th>
           <th>Drawings</th>
           <th>Drawing Status</th>
           <th>Revision</th>
@@ -52,23 +52,12 @@ const Projects = () => {
               <td>{dIndex === 0 ? project['project-name'] : ''}</td>
               <td>{dIndex === 0 ? project['architect-name'] : ''}</td>
               <td>{dIndex === 0 ? (project['site-location'] || '-') : ''}</td>
-              {/* Dynamically construct the image URL */}
-              <td>
-                {dIndex === 0 ? (
-                  <img
-                    src={`http://localhost:4000/${project['project-image']}`}
-                    alt={project['project-name']}
-                    width='100px'
-                    height="75px"
-                  />
-                ) : ''}
-              </td>
               <td>{drawing['drawing-name']}</td>
               <td>{drawing['drawing-status']}</td>
               <td>{drawing.revision || '-'}</td>
               <td>
-                <button>Edit</button>
-                <button>Delete</button>
+              <FaTrash/>
+              <FaPen/>
               </td>
             </tr>
           ))
