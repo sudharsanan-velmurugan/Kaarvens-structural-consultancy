@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baskervville+SC&family=Dosis:wght@200..800&display=swap');
 .project-header{
     display: flex;
     justify-content:center;
@@ -19,7 +20,7 @@
     text-align: center;
 }
 td,th{
-    border-bottom: 1px #dddddd solid;
+    border-bottom: 2px #dddddd solid;
     padding: 8px;
 }
 tr:nth-child(even){
@@ -36,4 +37,11 @@ tr:hover{
     font-family: "Kaushan Script", cursive;
     text-decoration: underline;
     font-weight: 900;
+}
+.tablehead{
+    font-family:"Playfair Display", serif;
+}
+.tablebody .trow{
+    font-family: "Dosis", sans-serif;
+    font-size: large;
 }

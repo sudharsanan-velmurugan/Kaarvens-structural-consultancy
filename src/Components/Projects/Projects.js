@@ -45,7 +45,7 @@ const Projects = () => {
       <tbody className='tablebody'>
         {projects.map((project, index) => (
           project.drawings.map((drawing, dIndex) => (
-            <tr key={`${index}-${dIndex}`}>
+            <tr className='trow' key={`${index}-${dIndex}`}>
               {/* Display project details only on the first row of each project's drawings */}
               <td>{dIndex === 0 ? project.id : ''}</td>
               <td>{dIndex === 0 ? project['job-no'] : ''}</td>
