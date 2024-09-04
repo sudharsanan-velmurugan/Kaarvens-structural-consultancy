@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 .project-header{
     display: flex;
@@ -9,19 +8,25 @@
     gap: 40px;
 }
 .project-header button{
-    width: 200px;
+    width: 100px;
     background-color: aqua;
     border: none;
 }
-.tablehead{
-    display: space-between;
+.project-body{
     font-family: "Playfair Display", serif;
-    font-style: italic;
-    background-color: aquamarine;
-}
-.tablebody{
-    font-family: "Lobster", sans-serif;
+    border-collapse: collapse;
+    width: 100%;
     text-align: center;
+}
+td,th{
+    border-bottom: 1px #dddddd solid;
+    padding: 8px;
+}
+tr:nth-child(even){
+    background-color: #dddddd;
+}
+tr:hover{
+    background-color: rgba(167, 163, 163, 0.2);
 }
 .project-container{
     text-align: center;
@@ -31,12 +36,4 @@
     font-family: "Kaushan Script", cursive;
     text-decoration: underline;
     font-weight: 900;
-}
-.project-body{
-    margin: auto;
-    border: 1px solid rgb(224, 216, 216);
-}
-.tablehead th{
-    border: 1px solid rgb(7,7,7);
-    margin: auto;
 }
