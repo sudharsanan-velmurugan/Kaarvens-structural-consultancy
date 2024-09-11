@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import '../Navbar/Navbar.css'
 import { useSelector } from 'react-redux'
+import { FaHome, FaEdit, FaUsers, FaUser } from "react-icons/fa";
+import { GrProjects } from "react-icons/gr";
 
 const Navbar = () => {
   
@@ -10,18 +12,17 @@ const Navbar = () => {
   return (
     <div className='Nav-Container'>
       <ul>
-        <li><Link className='nav-elements' to="/">Home</Link></li>
-        <li><Link className='nav-elements' to="/about">About</Link></li>
-        <li><Link className='nav-elements' to="/projects">Projects</Link></li>
-        <li><Link className='nav-elements' to="/contact">Contact</Link></li>
+        <li><Link className='nav-elements' to="/"><FaHome /></Link></li>
+        <li><Link className='nav-elements' to="/about"><FaEdit /></Link></li>
+        <li><Link className='nav-elements' to="/projects"><GrProjects /></Link></li>
         {isAdminLogin && (
-          <li><Link className='nav-elements' to="/users">Users</Link></li>
+          <li><Link className='nav-elements' to="/users"><FaUsers /></Link></li>
         )}
         {(isUserLogin || isAdminLogin) && (
           <>
             <li><Link className='nav-elements' to="/forgot">Forgot</Link></li>
             <li><Link className='nav-elements' to="/reset">Reset</Link></li>
-            <li><Link className='nav-elements' to="/profile">Profile</Link></li>
+            <li><Link className='nav-elements' to="/profile"><FaUser /></Link></li>
           </>
         )}
       </ul>
