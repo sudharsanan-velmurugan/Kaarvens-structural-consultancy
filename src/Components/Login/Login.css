@@ -33,7 +33,7 @@
     font-family: "PT Serif", serif;
 }
 .user-name-container input, .user-password-container input{
-    width: 50%;
+    width: 80%;
     height: 100%;
     background: transparent;
     border: none;
