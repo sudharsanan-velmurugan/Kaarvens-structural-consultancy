@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaTrash,FaPen } from 'react-icons/fa';
 import './Projects.css'
+import searchImg from '../../Images/search.jpg'
 const Projects = () => {
   // {to run the server we need to type this command : "npx json-server --watch db.json --port 4000" in this path "\Kaarvens-structural-consultancy\Projects-API">}
   const [projects, setProjects] = useState([]);
@@ -73,6 +74,10 @@ const Projects = () => {
         
           <Link to="">Create Product</Link>
           <button onClick={getProjects}>Refresh</button>
+          <div className='search-box'>
+          <input type='text' placeholder='Search' />
+          <img src={searchImg} alt="Search img"  />
+          </div>    
         
       </div>
       <table className='project-body'>
