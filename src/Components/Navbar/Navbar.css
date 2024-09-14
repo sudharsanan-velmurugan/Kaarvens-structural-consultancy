@@ -13,7 +13,7 @@
 .Header-Container{
     display: flex;
     justify-content: space-between;
-    background-color: rgb(96, 96, 97);
+    background-color:#111;
     margin: 0;
 }
 .Header-Container h1{
@@ -32,11 +32,11 @@
 
 .nav-elements {
     text-decoration: none;
-    color: rgb(4, 4, 4);
+    color: #fff;
     padding: 5px;
     border-radius: 1px;
     margin: 0 10px;
-    background-color:  rgb(96, 96, 97);
+    background-color: #111;
     cursor: pointer;
 }
 .nav-elements:hover{
