@@ -43,7 +43,9 @@ const Profile = () => {
         <div className='profile-page-save'>
           <button type='submit'>Save Changes</button>
         </div>
-        <button className='profile-btn' onClick={handleLogout}>Logout</button>
+        <button>
+          <Link className='profile-btn' to="/Logout"onClick={handleLogout}>Logout</Link>
+          </button> 
       </div>
     </section>
 
