@@ -1,0 +1,21 @@
+.logout-page-container{
+    width:500px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,.2);
+    backdrop-filter: blur(5px);
+    text-align: center;
+    justify-content: center;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 30px 40px;
+    margin-top: 50px;
+}
+.logout-image img{
+    border-radius: 50%;
+    width: 200px;
+    margin-bottom: 20px;
+}
+.logout-image p{
+    font-size: large;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}

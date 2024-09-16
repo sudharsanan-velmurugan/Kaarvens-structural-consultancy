@@ -14,6 +14,7 @@ import store from './Store/UserStore';
 import Users from './Components/Users/Users';
 import Profile from './Components/Profile/Profile';
 import Projects from './Components/Projects/Projects';
+import Logout from './Components/Logout/Logout';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function AppContent() {
         <Route path='/forgot' element={<Forgot />} />
         <Route path='/users' element={<Users />} />
         <Route path='/profile' element={<Profile />} />
+        <Route path='/logout' element={<Logout />} />
       </Routes>
     </>
   );
