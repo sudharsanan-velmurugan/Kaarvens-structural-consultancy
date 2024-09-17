@@ -43,7 +43,7 @@ function AppContent() {
         <Route path='/login' element={<Login />} />
         <Route path='/signin' element={<SignIn />} />
         <Route path='/reset' element={<Reset />} />
-        <Route path='/forgot' element={<Forgot />} />
+        <Route path='/forgot' element={<Forgot />} /> 
         <Route path='/users' element={<Users />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/logout' element={<Logout />} />

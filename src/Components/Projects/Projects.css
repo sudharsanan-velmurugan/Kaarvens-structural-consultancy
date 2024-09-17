@@ -48,12 +48,11 @@ tr:hover{
 .search-box img{
     border-radius: 50%;
     width: 30px;
-    margin-bottom: 20px;
 }
 .search-box{
     display: flex;
     align-items: center;
-    background-color: #fff;
+    background-color:#fff;
     padding: 10px 20px;
     border-radius: 50px;
 }
