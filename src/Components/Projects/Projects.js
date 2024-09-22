@@ -3,166 +3,103 @@ import { Link } from "react-router-dom";
 import { FaTrash, FaPen } from "react-icons/fa";
 import "./Projects.css";
 import searchImg from "../../Images/search.jpg";
-// const Projects = () => {
-//   // {to run the server we need to type this command : "npx json-server --watch db.json --port 4000" in this path "\Kaarvens-structural-consultancy\Projects-API">}
-//   const [projects, setProjects] = useState([]);
-//   // Fetch projects from API
-//   function getProjects() {
-//     fetch('http://localhost:4000/projects')
-//       .then((res) => {
-//         if (res.ok) {
-//           return res.json();
-//         } else {
-//           throw new Error();
-//         }
-//       })
-//       .then((data) => {
-//         setProjects(data);
-//       })
-//       .catch((error) => alert('Unable to get data'));
-//   }
-
-//   useEffect(getProjects, []);
-
-//   function TableHead() {
-//     return (
-//       <thead className='tablehead'>
-//         <tr>
-//           <th>Id</th>
-//           <th>Job No</th>
-//           <th>Project Name</th>
-//           <th>Architect Name</th>
-//           <th>Site Location</th>
-//           <th>Drawings</th>
-//           <th>Drawing Status</th>
-//           <th>Revision</th>
-//           <th>Action</th>
-//         </tr>
-//       </thead>
-//     )
-//   }
-//   function TableBody() {
-//     return (
-//       <tbody className='tablebody'>
-//         {projects.map((project, index) => (
-//           project.drawings.map((drawing, dIndex) => (
-//             <tr className='trow' key={`${index}-${dIndex}`}>
-//               {/* Display project details only on the first row of each project's drawings */}
-//               <td>{dIndex === 0 ? project.id : ''}</td>
-//               <td>{dIndex === 0 ? project['job-no'] : ''}</td>
-//               <td>{dIndex === 0 ? project['project-name'] : ''}</td>
-//               <td>{dIndex === 0 ? project['architect-name'] : ''}</td>
-//               <td>{dIndex === 0 ? (project['site-location'] || '-') : ''}</td>
-//               <td>{drawing['drawing-name']}</td>
-//               <td>{drawing['drawing-status']}</td>
-//               <td>{drawing.revision || '-'}</td>
-//               <td>
-//               <FaTrash/>
-//               <FaPen/>
-//               </td>
-//             </tr>
-//           ))
-//         ))}
-//       </tbody>
-//     )
-//   }
-
-//   return (
-//     <div className='project-container'>
-//       <h2>Projects</h2>
-//       <div className='project-header'>
-
-//           <Link to="">Create Product</Link>
-//           <button onClick={getProjects}>Refresh</button>
-//           <div className='search-box'>
-//           <input type='text' placeholder='Search' />
-//           <img src={searchImg} alt="Search img"  />
-//           </div>
-
-//       </div>
-//       <table className='project-body'>
-//           <TableHead/>
-//           <TableBody/>
-//       </table>
-//     </div>
-//   );
-// };
 
 const Projects = () => {
   const [projectData, setProjectData] = useState([]);
+
   // Fetch projects from API
   function getProjects() {
-    fetch("https://localhost:7166/api/ProjectDetails", {
-      method: 'GET',
+    fetch("https://localhost:7175/api/ProjectDetails", {
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      mode: 'cors'  // This ensures CORS mode is enabled
+      mode: "cors", // This ensures CORS mode is enabled
     })
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error(`HTTP error! Status: ${res.status}`);
-      }
-      return res.json();
-    })
-    .then((data) => {
-      setProjectData(data);
-    })
-    .catch((error) => {
-      console.error("Fetch error:", error); // Log error details
-      alert("Unable to get data: " + error.message);
-    });
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setProjectData(data);
+      })
+      .catch((error) => {
+        console.error("Fetch error:", error); // Log error details
+        alert("Unable to get data: " + error.message);
+      });
   }
-  
 
-  useEffect(getProjects, []);
+  useEffect(() => {
+    getProjects();
+  }, []);
+
   function TableHead() {
     return (
       <thead className="tablehead">
         <tr>
-          <th>Id</th>
           <th>Job No</th>
           <th>Project Name</th>
           <th>Architect Name</th>
           <th>Site Location</th>
+          <th>Drawings</th>
+          <th>Drawing Status</th>
+          <th>Revision</th>
           <th>Action</th>
         </tr>
       </thead>
     );
   }
+
   function TableBody() {
     return (
       <tbody className="tablebody">
         {projectData.map((project) => (
-          <tr key={project.id}>
-            <td>{project.id}</td>
-            <td>{project.jobNo}</td>
-            <td>{project.projectName}</td>
-            <td>{project.architectName}</td>
-            <td>{project.siteLocation}</td>
-            <td>
-              <FaTrash />
-              <FaPen />
-            </td>
-          </tr>
+          <React.Fragment key={project.id}>
+            {/* Project Details Row */}
+            <tr>
+              <td>{project.jobNo}</td>
+              <td>{project.projectName}</td>
+              <td>{project.architectName}</td>
+              <td>{project.siteLocation || '-'}</td>
+              <td colSpan={4}></td> {/* Leave space for drawing rows */}
+            </tr>
+            {/* Drawing Details Rows */}
+            {project.drawingDetails.map((drawing, index) => (
+              <tr key={index}>
+                <td colSpan={4}></td> {/* Empty cells for the project columns */}
+                <td>{drawing.drawingName}</td>
+                <td>{drawing.drawingStatus}</td>
+                <td>{drawing.revision}</td>
+                <td>
+                  <FaTrash />
+                  <FaPen />
+                </td>
+              </tr>
+            ))}
+          </React.Fragment>
         ))}
       </tbody>
     );
   }
+
   return (
-    <div className="project-container">
-      <h2>Projects</h2>
-      <div className="project-header">
-        <Link to="">Create Product</Link>
-        <button onClick={getProjects}>Refresh</button>
-        <div className="search-box">
-          <input type="text" placeholder="Search" />
-          <img src={searchImg} alt="Search img" />
-        </div>
+    <div className='project-container'>
+       <h2>Projects</h2>
+      <div className='project-header'>
+
+           <Link to="/createproject">Create project</Link>
+           <button onClick={getProjects}>Refresh</button>
+          <div className='search-box'>
+          <input type='text' placeholder='Search' />
+          <img src={searchImg} alt="Search img"  />
+          </div>
+
       </div>
-      <table className="project-body">
-        <TableHead />
-        <TableBody />
+       <table className='project-body'>
+          <TableHead/>
+          <TableBody/>
       </table>
     </div>
   );
