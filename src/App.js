@@ -15,6 +15,7 @@ import Users from './Components/Users/Users';
 import Profile from './Components/Profile/Profile';
 import Projects from './Components/Projects/Projects';
 import Logout from './Components/Logout/Logout';
+import CreateProject from './Components/Projects/Create Project/CreateProject';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function AppContent() {
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
         <Route path='/projects' element={<Projects />} />
+        <Route path='/createproject' element={<CreateProject />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signin' element={<SignIn />} />
