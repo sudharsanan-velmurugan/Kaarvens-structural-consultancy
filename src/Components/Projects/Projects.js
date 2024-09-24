@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaTrash, FaPen } from "react-icons/fa";
 import "./Projects.css";
 import searchImg from "../../Images/search.jpg";
 
 const Projects = () => {
+  const navigate = useNavigate()
   const [projectData, setProjectData] = useState([]);
 
   // Fetch projects from API
@@ -59,7 +60,10 @@ const Projects = () => {
         });
     }
   };
+  const handleEdit = (id)=>{
+    navigate("/editproject/${id}")
 
+  }
   function TableHead() {
     return (
       <thead className="tablehead">
@@ -91,7 +95,7 @@ const Projects = () => {
               <td colSpan={4}></td> {/* Leave space for drawing rows */}
               <td>
                 <FaTrash onClick={() => handleDelete(project.id)} style={{ cursor: "pointer", color: "red" }} />
-                <FaPen style={{ cursor: "pointer", color: "blue" }} />
+                <FaPen onClick={()=>handleEdit(project.id)} style={{ cursor: "pointer", color: "blue" }} />
               </td>
             </tr>
             {/* Drawing Details Rows */}
