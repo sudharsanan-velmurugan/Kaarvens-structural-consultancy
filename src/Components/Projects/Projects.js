@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaTrash, FaPen } from "react-icons/fa";
 import "./Projects.css";
 import searchImg from "../../Images/search.jpg";
 
 const Projects = () => {
+  const navigate = useNavigate()
   const [projectData, setProjectData] = useState([]);
 
   // Fetch projects from API
@@ -14,7 +15,7 @@ const Projects = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      mode: "cors", // This ensures CORS mode is enabled
+      mode: "cors",
     })
       .then((res) => {
         if (!res.ok) {
@@ -26,7 +27,7 @@ const Projects = () => {
         setProjectData(data);
       })
       .catch((error) => {
-        console.error("Fetch error:", error); // Log error details
+        console.error("Fetch error:", error);
         alert("Unable to get data: " + error.message);
       });
   }
@@ -35,6 +36,34 @@ const Projects = () => {
     getProjects();
   }, []);
 
+  // DELETE project by ID
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this project?")) {
+      fetch(`https://localhost:7175/api/ProjectDetails/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "cors",
+      })
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`);
+          }
+          // Remove deleted project from the UI
+          setProjectData((prevData) => prevData.filter((project) => project.id !== id));
+          alert("Project deleted successfully.");
+        })
+        .catch((error) => {
+          console.error("Delete error:", error);
+          alert("Unable to delete project: " + error.message);
+        });
+    }
+  };
+  const handleEdit = (id)=>{
+    navigate("/editproject/${id}")
+
+  }
   function TableHead() {
     return (
       <thead className="tablehead">
@@ -64,6 +93,10 @@ const Projects = () => {
               <td>{project.architectName}</td>
               <td>{project.siteLocation || '-'}</td>
               <td colSpan={4}></td> {/* Leave space for drawing rows */}
+              <td>
+                <FaTrash onClick={() => handleDelete(project.id)} style={{ cursor: "pointer", color: "red" }} />
+                <FaPen onClick={()=>handleEdit(project.id)} style={{ cursor: "pointer", color: "blue" }} />
+              </td>
             </tr>
             {/* Drawing Details Rows */}
             {project.drawingDetails.map((drawing, index) => (
@@ -72,10 +105,7 @@ const Projects = () => {
                 <td>{drawing.drawingName}</td>
                 <td>{drawing.drawingStatus}</td>
                 <td>{drawing.revision}</td>
-                <td>
-                  <FaTrash />
-                  <FaPen />
-                </td>
+                <td></td> {/* No actions for drawings */}
               </tr>
             ))}
           </React.Fragment>
@@ -85,21 +115,19 @@ const Projects = () => {
   }
 
   return (
-    <div className='project-container'>
-       <h2>Projects</h2>
-      <div className='project-header'>
-
-           <Link to="/createproject">Create project</Link>
-           <button onClick={getProjects}>Refresh</button>
-          <div className='search-box'>
-          <input type='text' placeholder='Search' />
-          <img src={searchImg} alt="Search img"  />
-          </div>
-
+    <div className="project-container">
+      <h2>Projects</h2>
+      <div className="project-header">
+        <Link to="/createproject">Create project</Link>
+        <button onClick={getProjects}>Refresh</button>
+        <div className="search-box">
+          <input type="text" placeholder="Search" />
+          <img src={searchImg} alt="Search img" />
+        </div>
       </div>
-       <table className='project-body'>
-          <TableHead/>
-          <TableBody/>
+      <table className="project-body">
+        <TableHead />
+        <TableBody />
       </table>
     </div>
   );
