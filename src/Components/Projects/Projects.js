@@ -61,7 +61,7 @@ const Projects = () => {
     }
   };
   const handleEdit = (id)=>{
-    navigate("/editproject/${id}")
+    navigate(`/editproject/${id}`)
 
   }
   function TableHead() {
