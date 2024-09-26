@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-
+import "../Create Project/CreateProject"
 const EditProject = () => {
   const { id } = useParams();
   const navigate = useNavigate()
@@ -95,7 +95,8 @@ const EditProject = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className="create-project-container">
+    <form onSubmit={handleSubmit} className='create-project-form-group'>
       <div>
         <label htmlFor="jobNo">Job No</label>
         <input
@@ -135,7 +136,7 @@ const EditProject = () => {
 
       <div>
         {formData.drawingDetails.map((drawing, index) => (
-          <div key={index}>
+          <div key={index} >
             <div>
               <label htmlFor={`drawingName-${index}`}>Drawing Name</label>
               <input
@@ -167,8 +168,9 @@ const EditProject = () => {
         ))}
       </div>
 
-      <button type="submit">Edit project</button>
+      <button className="create-project-link" type="submit">Edit project</button>
     </form>
+    </div>
   );
 };
 
