@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import './SignIn.css';
 import { useDispatch } from 'react-redux';
 import { addUser, setLoggedInUser } from '../../Slice/UserSlice';
-import { useNavigate,Link } from 'react-router-dom';
+import { useNavigate,Link, json } from 'react-router-dom';
 
 const SignIn = () => {
   const dispatch = useDispatch()
@@ -22,6 +22,33 @@ const SignIn = () => {
       [name]:value
     }))
   }
+  const AddToDB = ()=>{
+
+    fetch("https://localhost:7175/api/UserDetails",{
+      method:"POST",
+      headers:{
+        "Content-Type": "application/json",
+      },
+      mode:"cors",
+      body:JSON.stringify(formInput)
+    })
+    .then((res)=>{
+        if(!res.ok){
+          throw new Error(`HTTP Error status : ${res.status}`)
+        }
+
+        return res.json()
+    })
+    .catch((err)=>{
+      console.log(err);
+      alert("Unable to create user")
+    })
+
+  }
+
+const handleConditions =()=>{
+  
+}
   const handleSignin=(e)=>{
     const {firstName,lastName,email,mobile,password} =formInput
     e.preventDefault()
@@ -35,7 +62,9 @@ const SignIn = () => {
       }
     ))
     dispatch(setLoggedInUser(email))
+    
     alert('You have successfully registered')
+    AddToDB()
     navigate('/login')
   }
   return (
