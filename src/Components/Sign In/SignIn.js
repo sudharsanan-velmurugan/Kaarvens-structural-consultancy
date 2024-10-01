@@ -28,7 +28,8 @@ const SignIn = () => {
       firstName: formInput.firstName,
       lastName: formInput.lastName,
       mobileNo: formInput.mobile, // API expects 'mobileNo' field, not 'mobile'
-      email: formInput.email
+      email: formInput.email,
+      password:formInput.password
     };
     fetch("https://localhost:7175/api/UserDetails", {
       method: "POST",
@@ -93,22 +94,10 @@ const SignIn = () => {
   };
   
   const handleSignin=(e)=>{
-    const {firstName,lastName,email,mobile,password} =formInput
     e.preventDefault()
     if(!handleConditions()){
       return 
-    }
-    dispatch(addUser(
-      {
-        firstName:firstName,
-        lastName:lastName,
-        email:email,
-        mobile:mobile,
-        password:password,
-      }
-    ))
-    dispatch(setLoggedInUser(email))
-    
+    }    
     AddToDB()
     alert('You have successfully registered')
     navigate('/login')

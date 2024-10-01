@@ -4,11 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteUser } from "../../Slice/UserSlice";
 
 const Users = () => {
-  const dispatch = useDispatch();
-  const users = useSelector((state) => state.userInfo.users);
-  const removeUser = (index) => {
-    dispatch(deleteUser(index));
-  };
+
+  
 
   const [userDetails,setUserDetails] = useState([])
 
