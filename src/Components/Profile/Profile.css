@@ -53,12 +53,15 @@
     width: 200px;
     background-color: #fff;
     color: black;
+    margin-bottom: 20px;
+
 }
 .profile-page-save button{
     width: 150px;
     background-color: #fff;
     border-radius: 5px;
     color: black;
+    margin-bottom: 20px;
 }
 .profile-page-save button:hover{
     background-color: rgba(255,255,255,.5);

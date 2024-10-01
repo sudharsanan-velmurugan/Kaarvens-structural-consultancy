@@ -6,9 +6,8 @@ import { setLogout } from '../../Slice/LoginSlice'
 import { useDispatch, useSelector } from 'react-redux'
 const Profile = () => {
   const dispatch = useDispatch()
-  const loginMail = useSelector((state) => state.userInfo.loggedInUser)
-  const users = useSelector((state) => state.userInfo.users)
-  const loggedInUser = users.find((user) => user.email === loginMail)
+  const loggedInUser = useSelector((state) => state.userInfo.loggedInUser)
+
   const navigate = useNavigate()
   const handleLogout = () => {
     dispatch(setLogout())
@@ -35,7 +34,7 @@ const Profile = () => {
         </div>
         <div className='profile-page-mobileno'>
           <label>Mobile No :</label>
-          <input type='text' value={loggedInUser?.mobile}></input>
+          <input type='text' value={loggedInUser?.mobileNo}></input>
         </div>
         <div>
           <Link className='profile-page-password' to="/Reset">Change Password</Link>

@@ -1,28 +1,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
-.users-page-container{
+.users-page-container {
     text-align: center;
     margin: 0 auto;
     width: 100%;
-    min-height: 87.5vh;
-    background-color:rgb(196, 200, 203);
+    background-color: rgb(196, 200, 203);
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap; /* To wrap the elements if they overflow */
 }
-.users-page-container p{
-    font-family: "Pacifico", cursive;
-    font-weight: 300;
-}
-.users-page-container button{
-    background-color: #fff;
-    border-radius: 10px;
-    font-family:'Times New Roman', Times, serif ;
-}
-.users-elements{
+
+.users-elements {
     margin: 20px;
     background-color: rgb(127, 255, 244);
-    width: 250px;
-    height: 250px;
-    padding: 30px;
+    width:  fit-content ; /* Adjust based on content */
+    padding: 20px;
     border-radius: 5px;
+    display: inline-block;
+    text-align: left; /* Align text within the box */
+}
+
+.users-elements li {
+    font-family: "Pacifico", cursive;
+    font-weight: 300;
+    list-style: none;
+    margin-bottom: 10px; /* Space between list items */
+    display: flex; /* Aligns the label and value horizontally */
+    justify-content: space-between; /* Adds space between label and value */
+    padding: 5px 0; /* Adds space inside each list item */
+}
+
+.label {
+    font-weight: bold; /* Makes the label bold */
+    margin-right: 10px; /* Adds space between the label and value */
+    min-width: 100px; /* Ensures label has consistent width */
+}
+
+.label-value {
+    font-weight: normal;
+    text-align: left; /* Align values properly */
+    word-wrap: break-word; /* Wrap long text if needed */
+}
+
+
+.users-page-container button {
+    background-color: #fff;
+    border-radius: 10px;
+    font-family: 'Times New Roman', Times, serif;
 }
