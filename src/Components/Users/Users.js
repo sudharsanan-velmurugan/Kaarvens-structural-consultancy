@@ -69,6 +69,7 @@ const Users = () => {
             <li><span className="label">Last Name:</span> <span className="label-value">{user.lastName}</span></li>
             <li><span className="label">Email:</span> <span className="label-value">{user.email}</span></li>
             <li><span className="label">Mobile No:</span> <span className="label-value">{user.mobileNo}</span></li>
+            <li><span className="label">Password:</span> <span className="label-value">{user.password}</span></li>
             <button onClick={()=>handelDelete(user.id)}>Delete</button>
           </ul>
           
