@@ -17,6 +17,7 @@ import Projects from './Components/Projects/Projects';
 import Logout from './Components/Logout/Logout';
 import CreateProject from './Components/Projects/Create Project/CreateProject';
 import EditProject from './Components/Projects/Edit Project/EditProject';
+import EditProfile from './Components/Profile/EditProfile';
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function AppContent() {
         <Route path='/reset' element={<Reset />} />
         <Route path='/forgot' element={<Forgot />} /> 
         <Route path='/users' element={<Users />} />
+        <Route path='/editprofile' element={<EditProfile />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/logout' element={<Logout />} />
       </Routes>
