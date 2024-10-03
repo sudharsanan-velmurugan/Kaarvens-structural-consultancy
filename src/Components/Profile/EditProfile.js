@@ -4,8 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import './Profile.css'
 import { setLogout } from '../../Slice/LoginSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import { FaEdit } from "react-icons/fa";
-const Profile = () => {
+const EditProfile = () => {
   const dispatch = useDispatch()
   const loggedInUser = useSelector((state) => state.userInfo.loggedInUser)
 
@@ -21,7 +20,6 @@ const Profile = () => {
         <div className='profile-page-image'>
           <img src={profileImg} alt="Profile img" />
         </div>
-        <FaEdit/>
         <div className='profile-page-fname'>
           <label>First Name :</label>
           <input type='text' value={loggedInUser?.firstName}/>
@@ -53,4 +51,4 @@ const Profile = () => {
   )
 }
 
-export default Profile
+export default EditProfile
