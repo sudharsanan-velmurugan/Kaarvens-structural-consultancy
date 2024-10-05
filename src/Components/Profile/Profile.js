@@ -14,6 +14,10 @@ const Profile = () => {
     dispatch(setLogout())
     navigate('/')
   }
+  const handleEdit = ()=>{
+    navigate('/editprofile')
+
+  }
   return (
     <section className='profilepage'>
       <div className='profile-page-container'>
@@ -21,7 +25,10 @@ const Profile = () => {
         <div className='profile-page-image'>
           <img src={profileImg} alt="Profile img" />
         </div>
-        <FaEdit/>
+        <div>
+
+        </div>
+        <FaEdit onClick={handleEdit}/>
         <div className='profile-page-fname'>
           <label>First Name :</label>
           <input type='text' value={loggedInUser?.firstName}/>
