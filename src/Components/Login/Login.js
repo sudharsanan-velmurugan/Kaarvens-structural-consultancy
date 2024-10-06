@@ -41,10 +41,11 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-
-    if ((email === "admin") & (password === "admin@123")) {
+    const adminFound = userDetails.find((admin)=>admin.email === "admin@kaarvens.com" && admin.password ==="admin@123" )
+    if ((email === "admin@kaarvens.com") & (password === "admin@123")) {
       alert("you logged in as a admin");
       dispatch(setAdminLogin());
+      dispatch(setLoggedInUser(adminFound))
       navigate("/users");
     } 
     else {
