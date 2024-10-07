@@ -1,10 +1,58 @@
 import React, { useEffect, useState } from "react";
 import "./Users.css";
+import DataTable from "react-data-table-component";
+import { IoSearch } from "react-icons/io5";
+import { FaTrash } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteUser } from "../../Slice/UserSlice";
 
 const Users = () => {
 
+   const [search,setSearch]=useState('')
+  const column = [
+    {
+      name:'User ID',
+      selector:row=>row.id,
+      sortable:true
+      
+    },
+    {
+      name:'First Name',
+      selector:row=>row.firstName,
+      sortable:true
+    },
+    {
+      name:'Last Name',
+      selector:row=>row.lastName,
+      sortable:true
+    },
+    {
+      name:'Email',
+      selector:row=>row.email,
+      sortable:true
+    },
+    {
+      name:'Mobile No',
+      selector:row=>row.mobileNo
+    },
+    {
+      name:'Password',
+      selector:row=>row.password
+    },
+    {
+      name:'Action',
+      cell: row => (
+
+        <FaTrash
+          onClick={() => handelDelete(row.id)}
+          style={{ cursor: 'pointer', color: 'red', fontSize: '20px' }} // Proper icon styling
+        />
+      ),
+      ignoreRowClick: true, // Prevents triggering row click event when the button is clicked
+      allowOverflow: true,
+      button: true
+    },
+  ]
   
 
   const [userDetails,setUserDetails] = useState([])
@@ -61,20 +109,23 @@ const Users = () => {
   }
   return (
     <section className="users-page-container">
-     {userDetails.length>0? (
-        userDetails.map((user)=>(
-            <ul className="users-elements" key={user.id}>
-            <li><span className="label">User ID:</span> <span className="label-value">{user.id}</span></li>
-            <li><span className="label">First Name:</span> <span className="label-value">{user.firstName}</span></li>
-            <li><span className="label">Last Name:</span> <span className="label-value">{user.lastName}</span></li>
-            <li><span className="label">Email:</span> <span className="label-value">{user.email}</span></li>
-            <li><span className="label">Mobile No:</span> <span className="label-value">{user.mobileNo}</span></li>
-            <li><span className="label">Password:</span> <span className="label-value">{user.password}</span></li>
-            <button onClick={()=>handelDelete(user.id)}>Delete</button>
-          </ul>
-          
-        ))
-        ):(<p className="users-elements">No users found</p>)}
+        <div className="text-center m-3 d-flex justify-center gap-1">
+          <input  
+          type="text"
+          placeholder=" search"
+          onChange={(e)=>setSearch(e.target.value)}  />
+          <div className="text-size 300">
+          <IoSearch />
+          </div>
+        </div>
+        <DataTable 
+        columns={column}
+         data={userDetails.filter((user)=>(
+          search ===""? userDetails : user.firstName.toLowerCase().includes(search.toLowerCase())
+         ))}
+         selectableRows
+         >
+        </DataTable>
     </section>
   );
 };
