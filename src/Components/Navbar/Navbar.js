@@ -20,8 +20,8 @@ const Navbar = () => {
         )}
         {(isUserLogin || isAdminLogin) && (
           <>
-            <li><Link className='nav-elements' to="/forgot">Forgot</Link></li>
-            <li><Link className='nav-elements' to="/reset">Reset</Link></li>
+            {/* <li><Link className='nav-elements' to="/forgot">Forgot</Link></li> */}
+            {/* <li><Link className='nav-elements' to="/reset">Reset</Link></li> */}
             <li><Link className='nav-elements' to="/profile"><FaUser /></Link></li>
           </>
         )}
