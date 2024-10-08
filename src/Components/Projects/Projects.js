@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaTrash, FaPen } from "react-icons/fa";
+import { IoSearch } from "react-icons/io5";
 import "./Projects.css";
 import { Table } from "react-bootstrap";
-import searchImg from "../../Images/search.jpg";
 
 const Projects = () => {
   const navigate = useNavigate();
@@ -142,7 +142,7 @@ const Projects = () => {
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search"
           />
-          <img src={searchImg} alt="Search img" />
+          <IoSearch/>
         </div>
       </div>
 

@@ -1,63 +1,132 @@
-import React from 'react'
-import profileImg from '../../Images/profile.jpg'
-import { Link, useNavigate } from 'react-router-dom'
-import './Profile.css'
-import { setLogout } from '../../Slice/LoginSlice'
-import { useDispatch, useSelector } from 'react-redux'
-import { FaEdit } from "react-icons/fa";
+import React, { useState } from 'react';
+import profileImg from '../../Images/profile.jpg';
+import { useNavigate } from 'react-router-dom';
+import './Profile.css';
+import { setLogout } from '../../Slice/LoginSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import eye icons
+
 const Profile = () => {
-  const dispatch = useDispatch()
-  const loggedInUser = useSelector((state) => state.userInfo.loggedInUser)
+  const dispatch = useDispatch();
+  const loggedInUser = useSelector((state) => state.userInfo.loggedInUser);
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
+  // State to toggle password visibility
+  const [showPassword, setShowPassword] = useState(false);
+
   const handleLogout = () => {
-    dispatch(setLogout())
-    navigate('/')
-  }
-  const handleEdit = ()=>{
-    navigate('/editprofile')
+    dispatch(setLogout());
+    navigate('/');
+  };
 
-  }
+  // Navigate to edit profile
+  const handleEditProfile = () => {
+    navigate('/editprofile');
+  };
+
+  // Toggle the password visibility
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
-    <section className='profilepage'>
-      <div className='profile-page-container'>
-        <h1>Profile</h1>
-        <div className='profile-page-image'>
-          <img src={profileImg} alt="Profile img" />
+    <section className="container my-3 d-flex justify-content-center">
+      <div className="card shadow-lg p-4" style={{ width: '600px' }}>
+        <h1 className="text-center mb-4">Profile</h1>
+        <div className="text-center mb-4">
+          <img src={profileImg} alt="Profile" className="rounded-circle" width="150" height="150" />
         </div>
-        <div>
-
+  
+        <div className="mb-3 row justify-content-center">
+          <label className="col-sm-3 col-form-label text-right">First Name:</label>
+          <div className="col-sm-7">
+            <input
+              type="text"
+              className="form-control"
+              value={loggedInUser?.firstName}
+              readOnly
+            />
+          </div>
         </div>
-        <FaEdit onClick={handleEdit}/>
-        <div className='profile-page-fname'>
-          <label>First Name :</label>
-          <input type='text' value={loggedInUser?.firstName}/>
+  
+        <div className="mb-3 row justify-content-center">
+          <label className="col-sm-3 col-form-label text-right">Last Name:</label>
+          <div className="col-sm-7">
+            <input
+              type="text"
+              className="form-control"
+              value={loggedInUser?.lastName}
+              readOnly
+            />
+          </div>
         </div>
-        <div className='profile-page-lname'>
-          <label>Last Name :</label>
-          <input type='text' value={loggedInUser?.lastName}/>
+  
+        <div className="mb-3 row justify-content-center">
+          <label className="col-sm-3 col-form-label text-right">Email ID:</label>
+          <div className="col-sm-7">
+            <input
+              type="email"
+              className="form-control"
+              value={loggedInUser?.email}
+              readOnly
+            />
+          </div>
         </div>
-        <div className='profile-page-email'>
-          <label>Email Id :   </label>
-          <input type='email' value={loggedInUser?.email}/>
+  
+        <div className="mb-3 row justify-content-center">
+          <label className="col-sm-3 col-form-label text-right">Mobile No:</label>
+          <div className="col-sm-7">
+            <input
+              type="text"
+              className="form-control"
+              value={loggedInUser?.mobileNo}
+              readOnly
+            />
+          </div>
         </div>
-        <div className='profile-page-mobileno'>
-          <label>Mobile No :</label>
-          <input type='text' value={loggedInUser?.mobileNo}/>
+  
+        {/* Password Field with Eye Toggle */}
+        <div className="mb-3 row justify-content-center">
+          <label className="col-sm-3 col-form-label text-right">Password:</label>
+          <div className="col-sm-7 d-flex">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              className="form-control"
+              value={loggedInUser?.password}
+              readOnly
+            />
+            <button
+              type="button"
+              className="btn btn-outline-secondary ms-2"
+              onClick={togglePasswordVisibility}
+              style={{ width: '40px' }}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </button>
+          </div>
         </div>
-        <div>
-          <Link className='profile-page-password' to="/Reset">Change Password</Link>
+  
+        {/* Buttons for Logout and Edit Profile */}
+        <div className="text-center d-flex justify-content-center mt-4">
+          <button
+            className="btn btn-primary me-2"
+            style={{ width: '200px' }}
+            onClick={handleEditProfile}
+          >
+            Edit Profile
+          </button>
+          <button
+            className="btn btn-danger"
+            style={{ width: '200px' }}
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
         </div>
-        <div className='profile-page-save'>
-          <button type='submit'>Save Changes</button>
-        </div>
-        <button>
-          <Link className='profile-btn' to="/Logout"onClick={handleLogout}>Logout</Link>
-          </button> 
       </div>
     </section>
+  );
+  
+};
 
-  )
-}
-
-export default Profile
+export default Profile;

@@ -32,7 +32,7 @@ function App() {
 function AppContent() {
   const location = useLocation();
   const pathsToHideHeader = ['/', '/login', '/signin', '/reset', '/forget']
-  const pathsToHideSlideshow = ['/projects', '/contact', '/about', '/users', '/profile']
+  const pathsToHideSlideshow = ['/projects', '/contact', '/about', '/users']
   return (
     <>
       {!pathsToHideHeader.includes(location.pathname) && <Header />}
