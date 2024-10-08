@@ -3,8 +3,7 @@ import "./Users.css";
 import DataTable from "react-data-table-component";
 import { IoSearch } from "react-icons/io5";
 import { FaTrash } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteUser } from "../../Slice/UserSlice";
+
 
 const Users = () => {
 
