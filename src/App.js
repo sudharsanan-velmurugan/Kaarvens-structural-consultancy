@@ -18,6 +18,8 @@ import Logout from './Components/Logout/Logout';
 import CreateProject from './Components/Projects/Create Project/CreateProject';
 import EditProject from './Components/Projects/Edit Project/EditProject';
 import EditProfile from './Components/Profile/EditProfile';
+import Tasks from './Components/Tasks/Tasks/Tasks';
+import CreateTasks from './Components/Tasks/CreateTask/CreateTask';
 
 function App() {
   return (
@@ -32,7 +34,7 @@ function App() {
 function AppContent() {
   const location = useLocation();
   const pathsToHideHeader = ['/', '/login', '/signin', '/reset', '/forget']
-  const pathsToHideSlideshow = ['/projects', '/contact', '/about', '/users']
+  const pathsToHideSlideshow = ['/projects', '/contact', '/about', '/users','/tasks']
   return (
     <>
       {!pathsToHideHeader.includes(location.pathname) && <Header />}
@@ -45,6 +47,8 @@ function AppContent() {
         <Route path='/createproject' element={<CreateProject />} />
         <Route path='/editproject/:id' element={<EditProject />} />
         <Route path='/contact' element={<Contact />} />
+        <Route path='/tasks' element={<Tasks />} />
+        <Route path='/createtask' element={<CreateTasks />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signin' element={<SignIn />} />
         <Route path='/reset' element={<Reset />} />
