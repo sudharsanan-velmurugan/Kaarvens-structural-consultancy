@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import "../Create Project/CreateProject"
+
 const EditProject = () => {
   const { id } = useParams();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     jobNo: "",
@@ -54,6 +54,9 @@ const EditProject = () => {
       [name]: value,
     }));
   };
+  const handleBack = () => {
+    navigate("/projects");
+  };
 
   const handleDrawingChange = (e, index) => {
     const { name, value } = e.target;
@@ -86,91 +89,152 @@ const EditProject = () => {
       .then((data) => {
         alert("Project updated successfully!");
         setFormData(data); // Optionally reset the form with the updated data
+        navigate("/projects");
       })
       .catch((error) => {
         console.error("Fetch error:", error);
         alert("Unable to update project: " + error.message);
       });
-      navigate("/projects")
   };
 
   return (
-    <div className="create-project-container">
-    <form onSubmit={handleSubmit} className='create-project-form-group'>
-      <div>
-        <label htmlFor="jobNo">Job No</label>
-        <input
-          type="text"
-          name="jobNo"
-          value={formData.jobNo}
-          onChange={handleFormChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="projectName">Project Name</label>
-        <input
-          type="text"
-          name="projectName"
-          value={formData.projectName}
-          onChange={handleFormChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="architectName">Architect Name</label>
-        <input
-          type="text"
-          name="architectName"
-          value={formData.architectName}
-          onChange={handleFormChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="siteLocation">Site Location</label>
-        <input
-          type="text"
-          name="siteLocation"
-          value={formData.siteLocation}
-          onChange={handleFormChange}
-        />
-      </div>
-
-      <div>
-        {formData.drawingDetails.map((drawing, index) => (
-          <div key={index} >
-            <div>
-              <label htmlFor={`drawingName-${index}`}>Drawing Name</label>
+    <section className="container my-3 d-flex justify-content-center">
+      <div className="card shadow-lg p-4" style={{ width: "600px" }}>
+        <h2 className="text-center mb-4">Edit Project</h2>
+        <form onSubmit={handleSubmit}>
+          {/* Job Number Field */}
+          <div className="mb-3 row justify-content-center">
+            <label className="col-sm-3 col-form-label text-right">
+              Job No:
+            </label>
+            <div className="col-sm-7">
               <input
                 type="text"
-                name="drawingName"
-                value={drawing.drawingName}
-                onChange={(e) => handleDrawingChange(e, index)}
-              />
-            </div>
-            <div>
-              <label htmlFor={`drawingStatus-${index}`}>Drawing Status</label>
-              <input
-                type="text"
-                name="drawingStatus"
-                value={drawing.drawingStatus}
-                onChange={(e) => handleDrawingChange(e, index)}
-              />
-            </div>
-            <div>
-              <label htmlFor={`revision-${index}`}>Revision</label>
-              <input
-                type="text"
-                name="revision"
-                value={drawing.revision}
-                onChange={(e) => handleDrawingChange(e, index)}
+                className="form-control"
+                name="jobNo"
+                value={formData.jobNo}
+                onChange={handleFormChange}
               />
             </div>
           </div>
-        ))}
-      </div>
 
-      <button className="create-project-link" type="submit">Edit project</button>
-    </form>
-    </div>
+          {/* Project Name Field */}
+          <div className="mb-3 row justify-content-center">
+            <label className="col-sm-3 col-form-label text-right">
+              Project Name:
+            </label>
+            <div className="col-sm-7">
+              <input
+                type="text"
+                className="form-control"
+                name="projectName"
+                value={formData.projectName}
+                onChange={handleFormChange}
+              />
+            </div>
+          </div>
+
+          {/* Architect Name Field */}
+          <div className="mb-3 row justify-content-center">
+            <label className="col-sm-3 col-form-label text-right">
+              Architect Name:
+            </label>
+            <div className="col-sm-7">
+              <input
+                type="text"
+                className="form-control"
+                name="architectName"
+                value={formData.architectName}
+                onChange={handleFormChange}
+              />
+            </div>
+          </div>
+
+          {/* Site Location Field */}
+          <div className="mb-3 row justify-content-center">
+            <label className="col-sm-3 col-form-label text-right">
+              Site Location:
+            </label>
+            <div className="col-sm-7">
+              <input
+                type="text"
+                className="form-control"
+                name="siteLocation"
+                value={formData.siteLocation}
+                onChange={handleFormChange}
+              />
+            </div>
+          </div>
+
+          {/* Drawing Details */}
+          <h4 className="text-center mt-4">Drawing Details</h4>
+          {formData.drawingDetails.map((drawing, index) => (
+            <div key={index} className="mb-3">
+              <div className="row justify-content-center">
+                <label className="col-sm-3 col-form-label text-right">
+                  Drawing Name:
+                </label>
+                <div className="col-sm-7">
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="drawingName"
+                    value={drawing.drawingName}
+                    onChange={(e) => handleDrawingChange(e, index)}
+                  />
+                </div>
+              </div>
+              <div className="row justify-content-center mt-3">
+                <label className="col-sm-3 col-form-label text-right">
+                  Drawing Status:
+                </label>
+                <div className="col-sm-7">
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="drawingStatus"
+                    value={drawing.drawingStatus}
+                    onChange={(e) => handleDrawingChange(e, index)}
+                  />
+                </div>
+              </div>
+              <div className="row justify-content-center mt-3">
+                <label className="col-sm-3 col-form-label text-right">
+                  Revision:
+                </label>
+                <div className="col-sm-7">
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="revision"
+                    value={drawing.revision}
+                    onChange={(e) => handleDrawingChange(e, index)}
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
+
+          {/* Submit Button */}
+          <div className="text-center mt-4">
+            <button
+              type="submit"
+              className="btn btn-primary"
+              style={{ width: "200px" }}
+            >
+              Edit Project
+            </button>
+            <button
+              onClick={handleBack}
+              className="btn btn-danger"
+              style={{ width: "200px", marginLeft: "10px" }}
+            >
+              Back
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
   );
 };
 

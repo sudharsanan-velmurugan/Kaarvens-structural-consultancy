@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaTrash, FaPen } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
-import "./Projects.css";
-import { Table } from "react-bootstrap";
+import { Table, Button, InputGroup, FormControl } from "react-bootstrap";
 
 const Projects = () => {
   const navigate = useNavigate();
   const [projectData, setProjectData] = useState([]);
   const [search, setSearch] = useState("");
+
   // Fetch projects from API
   function getProjects() {
     fetch("https://localhost:7175/api/ProjectDetails", {
@@ -51,10 +51,7 @@ const Projects = () => {
           if (!res.ok) {
             throw new Error(`HTTP error! Status: ${res.status}`);
           }
-          // Remove deleted project from the UI
-          setProjectData((prevData) =>
-            prevData.filter((project) => project.id !== id)
-          );
+          getProjects();
           alert("Project deleted successfully.");
         })
         .catch((error) => {
@@ -63,13 +60,16 @@ const Projects = () => {
         });
     }
   };
+
   const handleEdit = (id) => {
     navigate(`/editproject/${id}`);
   };
+
   function TableHead() {
     return (
-      <thead className="tablehead">
+      <thead className="tablehead bg-primary text-white">
         <tr>
+          <th>S.No</th>
           <th>Job No</th>
           <th>Project Name</th>
           <th>Architect Name</th>
@@ -90,38 +90,52 @@ const Projects = () => {
           .filter((project) =>
             search.toLowerCase() === ""
               ? project
-              : project.projectName.toLowerCase().includes(search.toLowerCase()) ||
-              project.architectName.toLowerCase().includes(search.toLowerCase())
+              : project.projectName
+                  .toLowerCase()
+                  .includes(search.toLowerCase()) ||
+                project.architectName
+                  .toLowerCase()
+                  .includes(search.toLowerCase())
           )
-          .map((project) => (
+          .map((project, i) => (
             <React.Fragment key={project.id}>
               {/* Project Details Row */}
               <tr>
+                <td>{i + 1}</td> {/* Serial Number */}
                 <td>{project.jobNo}</td>
                 <td>{project.projectName}</td>
                 <td>{project.architectName}</td>
-                <td>{project.siteLocation || "-"}</td>
+                <td>{project.siteLocation || "-"}</td> {/* Site Location */}
                 <td colSpan={3}></td> {/* Leave space for drawing rows */}
                 <td>
                   <FaTrash
-                    
                     onClick={() => handleDelete(project.id)}
                     style={{ cursor: "pointer", color: "red" }}
                   />
                   <FaPen
                     onClick={() => handleEdit(project.id)}
-                    style={{ cursor: "pointer", color: "blue",marginLeft: "15px" }}
+                    style={{
+                      cursor: "pointer",
+                      color: "blue",
+                      marginLeft: "15px",
+                    }}
                   />
                 </td>
               </tr>
+
               {/* Drawing Details Rows */}
               {project.drawingDetails.map((drawing, index) => (
                 <tr key={index}>
-                  <td colSpan={4}></td>{" "}
-                  {/* Empty cells for the project columns */}
-                  <td>{drawing.drawingName}</td>
-                  <td>{drawing.drawingStatus}</td>
-                  <td>{drawing.revision}</td>
+                  {/* Empty cells for project columns */}
+                  <td></td> {/* Empty for Serial No */}
+                  <td></td> {/* Empty for Job No */}
+                  <td></td> {/* Empty for Project Name */}
+                  <td></td> {/* Empty for Architect Name */}
+                  <td></td> {/* Empty for Site Location */}
+                  {/* Drawing Details */}
+                  <td>{drawing.drawingName}</td> {/* Drawing Name */}
+                  <td>{drawing.drawingStatus}</td> {/* Drawing Status */}
+                  <td>{drawing.revision || "-"}</td> {/* Revision */}
                 </tr>
               ))}
             </React.Fragment>
@@ -131,26 +145,36 @@ const Projects = () => {
   }
 
   return (
-    <div className="project-container">
-      <h2>Projects</h2>
-      <div className="project-header">
-        <Link to="/createproject">Create project</Link>
-        <button onClick={getProjects}>Refresh</button>
-        <div className="search-box">
-          <input
-            type="text"
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search"
-          />
-          <IoSearch/>
-        </div>
+    <div className="project-container p-4">
+    <h2 className="mb-4 text-center">Projects</h2>
+    <div className="project-header d-flex justify-content-between align-items-center mb-4 w-75">
+      <Link to="/createproject" className="w-25 m-2 " >
+        <Button className="custom-create-btn text-white me-2 bg-success "   >Create Project</Button>
+      </Link>
+      <Button className="custom-refresh-btn w-25">Refresh</Button>
+      
+      <div className="d-flex ">
+        <input
+          type="text"
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder=" Search Projects"
+          aria-label="Search Projects"
+        />
+        <Button className="custom-search-btn " style={{marginLeft:'5px'}}>
+          <IoSearch />
+        </Button>
       </div>
+    </div>
 
-      <Table striped bordered hover>
+    <Table striped bordered hover responsive>
         <TableHead />
         <TableBody />
       </Table>
-    </div>
+  </div>
+  
+
+      
+   
   );
 };
 

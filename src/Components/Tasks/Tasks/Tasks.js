@@ -1,72 +1,77 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { FaTrash, FaPen } from "react-icons/fa";
 
 const Tasks = () => {
+  const [taskData,setTaskData] =useState([])
   
-  // Sample task data
-  const taskData = [
-    {
-      taskId: 1,
-      taskName: "Design UI Mockups",
-      taskOwner: "Alice Johnson",
-      assignee: "John Smith",
-      startDate: "2024-10-01",
-      dueDate: "2024-10-10",
-      status: "In Progress",
-      comments: "UI wireframes are almost done.Client feedback is pending."
-    },
-    {
-      taskId: 2,
-      taskName: "Implement Backend API",
-      taskOwner: "Alice Johnson",
-      assignee: "Michael Brown",
-      startDate: "2024-10-05",
-      dueDate: "2024-10-15",
-      status: "Pending",
-      comments: "Waiting for the database schema.API specifications are finalized."
-    },
-    {
-      taskId: 3,
-      taskName: "Set Up Database",
-      taskOwner: "Bob Williams",
-      assignee: "Sarah Lee",
-      startDate: "2024-10-02",
-      dueDate: "2024-10-12",
-      status: "Completed",
-      comments: "Database setup completed.Ready for API integration."
-    },
-    {
-      taskId: 4,
-      taskName: "Create Testing Plan",
-      taskOwner: "Charlie Green",
-      assignee: "Emma Davis",
-      startDate: "2024-10-08",
-      dueDate: "2024-10-18",
-      status: "In Progress",
-      comments: "Test cases being written.Automation tools under evaluation."
-    },
-    {
-      taskId: 5,
-      taskName: "Deploy to Staging",
-      taskOwner: "David Clark",
-      assignee: "John Smith",
-      startDate: "2024-10-09",
-      dueDate: "2024-10-20",
-      status: "Not Started",
-      comments: "Deployment scripts are ready.Need confirmation on environment setup.Deployment scripts are ready.Need confirmation on environment setup.Deployment scripts are ready.Need confirmation on environment setup."
-    }
-  ];
+  const getTaskData = ()=>{
+
+    fetch("https://localhost:7175/api/TaskDetails",{
+      method:"GET",
+      headers:{
+        "Content-Type":"application/json",
+        
+      },
+      mode:"cors"
+    })
+    .then((res)=>{
+      if(!res.ok){
+        throw new Error(`HTTP starus Error:${res.status}`)
+      }
+       return res.json()
+    })
+    .then((data)=>{
+      setTaskData(data)
+    })
+    .catch((err)=>{
+      alert("Unable to get task data "+err.message)
+    })
+
+  }
+useEffect(()=>{
+  getTaskData()
+},[])
 
   const navigate = useNavigate()
   const handleCreateTask = () =>{
     navigate('/createtask')
   }
+  const handleEdit = (id) => {
+    navigate(`/edittask/${id}`);
+  };
+  const handleDeleteTask = (id) => {
+    if (window.confirm("Are you sure you want to delete this Task?")) {
+      fetch(`https://localhost:7175/api/TaskDetails?id=${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "cors",
+      })
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`);
+          }
+          // Re-fetch the task list from the server to stay in sync
+          getTaskData();
+          alert("Task deleted successfully.");
+        })
+        .catch((error) => {
+          console.error("Delete error:", error);
+          alert("Unable to delete Task: " + error.message);
+        });
+    }
+  };
+  
+  
   
   return (
     <div className="container mt-4">
-      <div >
-        <button onClick={handleCreateTask} className='btn btn-primary'>Create Task</button>
+      <div className='w-50 my-3'>
+        <button onClick={handleCreateTask} className='btn btn-primary w-25'>Create Task</button>
       </div>
       <h2 className="mb-4">Task List</h2>
       <table className="table table-bordered table-striped">
@@ -80,6 +85,7 @@ const Tasks = () => {
             <th>Due Date</th>
             <th>Status</th>
             <th style={{ width: '30%' }}>Comments</th> {/* Set a wider width for the Comments column */}
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -93,6 +99,10 @@ const Tasks = () => {
               <td>{task.dueDate}</td>
               <td>{task.status}</td>
               <td>{task.comments} </td>
+              <td>
+                <FaPen style={{marginRight:'10px'}} onClick={()=>handleEdit(task.taskId)}/>
+                <FaTrash style={{color:"red", cursor:"pointer"}} onClick={()=>handleDeleteTask(task.taskId)}/>
+              </td>
             </tr>
           ))}
         </tbody>
