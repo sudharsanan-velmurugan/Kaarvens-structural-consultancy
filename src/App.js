@@ -20,6 +20,7 @@ import EditProject from './Components/Projects/Edit Project/EditProject';
 import EditProfile from './Components/Profile/EditProfile';
 import Tasks from './Components/Tasks/Tasks/Tasks';
 import CreateTasks from './Components/Tasks/CreateTask/CreateTask';
+import EditTask from './Components/Tasks/EditTask/EditTask';
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function AppContent() {
         <Route path='/contact' element={<Contact />} />
         <Route path='/tasks' element={<Tasks />} />
         <Route path='/createtask' element={<CreateTasks />} />
+        <Route path='/edittask/:id' element={<EditTask />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signin' element={<SignIn />} />
         <Route path='/reset' element={<Reset />} />

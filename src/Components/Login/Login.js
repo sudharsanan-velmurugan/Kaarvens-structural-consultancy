@@ -56,10 +56,9 @@ const Login = () => {
         alert("You are logged in as a user");
         dispatch(setUserLogin());
         dispatch(setLoggedInUser(userFound));
-        navigate("/Services");
+        navigate("/projects");
       } else {
         alert("invalid login id or pass");
-        navigate("/");
       }
     }
   };
