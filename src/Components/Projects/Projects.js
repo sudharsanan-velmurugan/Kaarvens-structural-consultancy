@@ -146,35 +146,30 @@ const Projects = () => {
 
   return (
     <div className="project-container p-4">
-    <h2 className="mb-4 text-center">Projects</h2>
-    <div className="project-header d-flex justify-content-between align-items-center mb-4 w-75">
-      <Link to="/createproject" className="w-25 m-2 " >
-        <Button className="custom-create-btn text-white me-2 bg-success "   >Create Project</Button>
-      </Link>
-      <Button className="custom-refresh-btn w-25">Refresh</Button>
-      
-      <div className="d-flex ">
-        <input
-          type="text"
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder=" Search Projects"
-          aria-label="Search Projects"
-        />
-        <Button className="custom-search-btn " style={{marginLeft:'5px'}}>
-          <IoSearch />
-        </Button>
-      </div>
-    </div>
+      <h2 className="mb-4 text-center">Projects</h2>
+      <div className="project-header d-flex justify-content-between align-items-center mb-4 w-75">
+        <Link to="/createproject" className="w-25 m-2 ">
+          <Button className="custom-create-btn text-white me-2 bg-success ">
+            Create Project
+          </Button>
+        </Link>
+        <Button className="custom-refresh-btn w-25">Refresh</Button>
 
-    <Table striped bordered hover responsive>
+        <div className="text-end">
+          <input
+            type="text"
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder=" Search Projects"
+          />
+          <IoSearch style={{ marginLeft: "3px", fontSize: "19px" }} />
+        </div>
+      </div>
+
+      <Table striped bordered hover responsive>
         <TableHead />
         <TableBody />
       </Table>
-  </div>
-  
-
-      
-   
+    </div>
   );
 };
 
