@@ -1,13 +1,17 @@
 import React, { useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { FaTrash, FaPen } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
+import { useSelector } from "react-redux";
 
 const Tasks = () => {
   const [taskData, setTaskData] = useState([]);
   const [search, setSearch] = useState("");
+  const [task, setTask] = useState("allTasks");
+
+  const loggedInUser = useSelector((state) => state.userInfo.loggedInUser);
+  const currentUser = loggedInUser?.firstName;
 
   const getTaskData = () => {
     fetch("https://localhost:7175/api/TaskDetails", {
@@ -71,8 +75,11 @@ const Tasks = () => {
     return new Date(date).toISOString().slice(0, 10);
   };
 
-  // Filter taskData based on the search input
-  const filteredTasks = taskData.filter((task) => {
+  const filterByUser = taskData.filter((data) => {
+    return task === "allTasks" ? data : data.taskOwner === currentUser;
+  });
+
+  const filteredTasks = filterByUser.filter((task) => {
     return search === ""
       ? task
       : task.taskName.toLowerCase().includes(search.toLowerCase()) ||
@@ -82,22 +89,46 @@ const Tasks = () => {
 
   return (
     <div className="container mt-4">
-      <div className="w-50 my-3">
-        <button onClick={handleCreateTask} className="btn btn-primary w-25">
-          Create Task
-        </button>
-      </div>
-
       <h2 className="mb-4">Task List</h2>
-      <div className="my-3 text-end">
-        <input
-          type="text"
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder=" Search"
-        />
-        <IoSearch style={{ marginLeft: "3px", fontSize: "19px" }} />
+
+      {/* Top section: Create Task, Search, and Filter */}
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        {/* Create Task Button */}
+        <div style={{ width: "auto", marginRight: "15px" }}>
+          <button style={{padding:'10px 30px'}} onClick={handleCreateTask} className="btn btn-primary btn-sm">
+            Create Task
+          </button>
+        </div>
+
+        {/* Search Box */}
+        <div style={{ width: "auto", marginRight: "15px" }}>
+          <div className="input-group">
+            <input
+              type="text"
+              className="form-control form-control-sm"
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search tasks..."
+            />
+            <span className="input-group-text">
+              <IoSearch />
+            </span>
+          </div>
+        </div>
+
+        {/* Filter Dropdown */}
+        <div style={{ width: "auto" }}>
+          <select
+            className="form-select form-select-sm"
+            value={task}
+            onChange={(e) => setTask(e.target.value)}
+          >
+            <option value="allTasks">All Tasks</option>
+            <option value="myTasks">My Tasks</option>
+          </select>
+        </div>
       </div>
 
+      {/* Task Table */}
       <table className="table table-bordered table-striped">
         <thead className="thead-dark">
           <tr>
@@ -126,7 +157,7 @@ const Tasks = () => {
                 <td>{task.comments}</td>
                 <td>
                   <FaPen
-                    style={{ marginRight: "10px", color: "green" }}
+                    style={{ marginRight: "10px", color: "green", cursor: "pointer" }}
                     onClick={() => handleEdit(task.taskId)}
                   />
                   <FaTrash
