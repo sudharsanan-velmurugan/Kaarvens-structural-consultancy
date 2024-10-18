@@ -21,6 +21,7 @@ import EditProfile from './Components/Profile/EditProfile';
 import Tasks from './Components/Tasks/Tasks/Tasks';
 import CreateTasks from './Components/Tasks/CreateTask/CreateTask';
 import EditTask from './Components/Tasks/EditTask/EditTask';
+import Finance from './Components/Finance/Finance';
 
 function App() {
   return (
@@ -58,6 +59,7 @@ function AppContent() {
         <Route path='/users' element={<Users />} />
         <Route path='/editprofile' element={<EditProfile />} />
         <Route path='/profile' element={<Profile />} />
+        <Route path='/finance' element={<Finance />} />
         <Route path='/logout' element={<Logout />} />
       </Routes>
     </>
