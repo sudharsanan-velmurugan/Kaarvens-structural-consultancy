@@ -84,7 +84,9 @@ const EditTask = () => {
     GetTaskDetail();
   }, []);
 
-
+  const handleBack =()=>{
+    navigate('/task')
+   }
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -250,6 +252,9 @@ const EditTask = () => {
           <div className="text-center d-flex justify-content-center mt-4">
             <button className="btn btn-primary me-2" style={{ width: '200px' }} type='submit'>
               Edit Task
+            </button>
+            <button className="btn btn-secondary me-2" style={{ width: '200px' }} onClick={handleBack}>
+              Back
             </button>
           </div>
         </form>
