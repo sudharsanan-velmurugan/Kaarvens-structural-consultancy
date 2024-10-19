@@ -108,17 +108,18 @@ const Projects = () => {
                 <td>{project.siteLocation || "-"}</td> {/* Site Location */}
                 <td colSpan={3}></td> {/* Leave space for drawing rows */}
                 <td>
-                  <FaTrash
-                    onClick={() => handleDelete(project.id)}
-                    style={{ cursor: "pointer", color: "red" }}
-                  />
+                 
                   <FaPen
                     onClick={() => handleEdit(project.id)}
                     style={{
                       cursor: "pointer",
                       color: "blue",
-                      marginLeft: "15px",
+                      marginRight: "15px",
                     }}
+                  />
+                   <FaTrash
+                    onClick={() => handleDelete(project.id)}
+                    style={{ cursor: "pointer", color: "red" }}
                   />
                 </td>
               </tr>
