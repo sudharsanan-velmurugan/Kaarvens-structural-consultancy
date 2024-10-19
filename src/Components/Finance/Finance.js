@@ -33,7 +33,8 @@ const Finance = () => {
   };
 
   const handleEditFinance = (id) => {
-    navigate(`/editfinance/${id}`); // Ensure this points to the right edit page
+     // Prevents default action if this is part of a form or link
+    navigate(`/editfinance/${id}`); // Ensure this path is correct
   };
 
   const handleCreateTask = () => {
@@ -77,7 +78,7 @@ const Finance = () => {
                     <FaPen
                       className="text-success me-3"
                       style={{ cursor: "pointer" }}
-                      onClick={() => handleEditFinance(finance.id)} // Ensure this calls the correct function
+                      onClick={()=>handleEditFinance(finance.id)} // Ensure this calls the correct function
                     />
                     <FaTrash
                       className="text-danger"

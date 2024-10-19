@@ -5,32 +5,39 @@ import UseGetByIDMethod from "../CommonHttpVerbs/UseGetByIdMethod";
 import UsePutMethod from "../CommonHttpVerbs/UsePutMethod";
 
 const EditFinance = () => {
-  const navigate = useNavigate()
-  const { id } = useParams();
+  const navigate = useNavigate();
+  const { id } = useParams(); // Get the finance ID from the route params
 
   // Fetch finance details by ID
-  const { data, isLoading } = UseGetByIDMethod(
+  const { data, isLoading, error } = UseGetByIDMethod(
     `https://localhost:7175/api/FinanceDetails/${id}`
   );
 
   // Local state for form input fields
   const [financeInput, setFinanceInput] = useState({
+    id: id || "", // Ensure ID is part of the form
     projectName: "",
     status: "In Progress", // Default value
     comments: "",
   });
 
+  // Use the UsePutMethod to get the putRequest function
+  const { putRequest } = UsePutMethod(
+    `https://localhost:7175/api/FinanceDetails`, // URL without the ID in path
+    financeInput // Send the entire financeInput object with ID, projectName, status, and comments
+  );
+
   // Update local state with fetched finance details once available
   useEffect(() => {
     if (data) {
-      // Assuming the response returns finance details directly in the data object
       setFinanceInput({
-        projectName: data.projectName || "", // Provide fallback to avoid undefined
-        status: data.status || "In Progress", // Default to 'In Progress' if undefined
+        id: id,
+        projectName: data.projectName || "",
+        status: data.status || "In Progress",
         comments: data.comments || "",
       });
     }
-  }, [data]); // Runs when data is updated after fetching
+  }, [data]);
 
   // Handle input field changes
   const handleInputChange = (e) => {
@@ -41,42 +48,23 @@ const EditFinance = () => {
     }));
   };
 
-  // Handle select change for status
-  const handleStatusChange = (e) => {
-    const { value } = e.target;
-    setFinanceInput((prev) => ({
-      ...prev,
-      status: value,
-    }));
-  };
-  const handleBack = ()=>{
-    navigate('/finance')
-  }
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      // Call the PUT method to update finance details
-      const response = await UsePutMethod(
-        `https://localhost:7175/api/FinanceDetails/${id}`,
-        financeInput
-      );
-      if (response.ok) {
-        alert("Finance details updated successfully");
-        navigate('/finance')
-      } else {
-        alert(`Error updating finance details: ${response.statusText}`);
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("Error updating finance details");
+    const response = await putRequest(); // Call the PUT request
+
+    if (response) {
+      navigate("/finance"); // Navigate after a successful update
     }
   };
 
-  // Display loading state
   if (isLoading) {
     return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
   }
 
   return (
@@ -104,14 +92,12 @@ const EditFinance = () => {
 
           {/* Status */}
           <div className="mb-3 row justify-content-center">
-            <label className="col-sm-3 col-form-label text-right">
-              Status:
-            </label>
+            <label className="col-sm-3 col-form-label text-right">Status:</label>
             <div className="col-sm-7">
               <Form.Select
                 name="status"
                 value={financeInput.status}
-                onChange={handleStatusChange}
+                onChange={handleInputChange}
                 required
               >
                 <option value="In Progress">In Progress</option>
@@ -122,9 +108,7 @@ const EditFinance = () => {
 
           {/* Comments */}
           <div className="mb-3 row justify-content-center">
-            <label className="col-sm-3 col-form-label text-right">
-              Comments:
-            </label>
+            <label className="col-sm-3 col-form-label text-right">Comments:</label>
             <div className="col-sm-7">
               <textarea
                 className="form-control"
@@ -138,21 +122,16 @@ const EditFinance = () => {
             </div>
           </div>
 
-          {/* Submit Button */}
+          {/* Submit and Back Buttons */}
           <div className="text-center d-flex justify-content-center mt-4">
-           
             <Button
-              onClick={handleBack}
+              onClick={() => navigate("/finance")}
               className="btn btn-danger"
               style={{ width: "200px", marginRight: "10px" }}
             >
               Back
             </Button>
-            <Button
-              className="btn btn-primary me-2"
-              style={{ width: "200px" }}
-              type="submit"
-            >
+            <Button className="btn btn-primary me-2" style={{ width: "200px" }} type="submit">
               Edit Finance
             </Button>
           </div>
