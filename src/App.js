@@ -22,6 +22,8 @@ import Tasks from './Components/Tasks/Tasks/Tasks';
 import CreateTasks from './Components/Tasks/CreateTask/CreateTask';
 import EditTask from './Components/Tasks/EditTask/EditTask';
 import Finance from './Components/Finance/Finance';
+import CreateFinance from './Components/Finance/CreateFinance';
+import EditFinance from './Components/Finance/EditFinance';
 
 function App() {
   return (
@@ -36,7 +38,7 @@ function App() {
 function AppContent() {
   const location = useLocation();
   const pathsToHideHeader = ['/', '/login', '/signin', '/reset', '/forget']
-  const pathsToHideSlideshow = ['/projects', '/contact', '/about', '/users','/tasks']
+  const pathsToHideSlideshow = ['/projects', '/contact', '/about', '/users','/tasks','/editprofile/:id']
   return (
     <>
       {!pathsToHideHeader.includes(location.pathname) && <Header />}
@@ -60,6 +62,8 @@ function AppContent() {
         <Route path='/editprofile' element={<EditProfile />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/finance' element={<Finance />} />
+        <Route path='/createfinance' element={<CreateFinance />} />
+        <Route path='/editfinance/:id' element={<EditFinance />} />
         <Route path='/logout' element={<Logout />} />
       </Routes>
     </>

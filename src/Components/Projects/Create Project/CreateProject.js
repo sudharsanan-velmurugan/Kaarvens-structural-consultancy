@@ -75,8 +75,7 @@ const CreateProject = () => {
                 throw new Error('Something went wrong');
             }
 
-            const data = await response.json();
-            console.log('Project created successfully', data);
+            alert("Project Created Successfully")
             navigate("/projects");
         } catch (error) {
             console.error('Error:', error);
