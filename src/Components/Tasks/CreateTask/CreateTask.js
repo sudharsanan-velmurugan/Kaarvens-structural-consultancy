@@ -50,7 +50,7 @@ const CreateTask = () => {
     GetUserDeteils();
   }, []);
  const handleBack =()=>{
-  navigate('/task')
+  navigate('/tasks')
  }
   const handleSubmit = async (e) => {
     e.preventDefault();
