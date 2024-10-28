@@ -9,8 +9,8 @@ const Home = () => {
     <div>
       <About />
       <div className='links-container'>
-        <Link className='nav-elements' to="/signin">Sign in</Link>
-        <Link className='nav-elements' to="/login">Login</Link>
+        <Link className='nav-elements' style={{borderRadius:"3px"}} to="/signin">Sign in</Link>
+        <Link className='nav-elements' style={{borderRadius:"3px"}} to="/login">Login</Link>
       </div>
     </div>
   )
