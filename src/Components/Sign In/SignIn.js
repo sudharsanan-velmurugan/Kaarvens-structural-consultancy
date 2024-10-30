@@ -58,7 +58,6 @@ const SignIn = () => {
         return res.json();
       })
       .then((data) => {
-        console.log("User created successfully:", data);
         alert('You have successfully registered');
         navigate('/login');
       })

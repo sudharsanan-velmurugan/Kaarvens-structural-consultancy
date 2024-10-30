@@ -66,8 +66,6 @@ const CreateTask = () => {
       comments: formInputs.comments
     };
     
-    console.log("Submitting the following data:", JSON.stringify(formattedInputs)); // Log the payload
-
     try {
       const response = await fetch('https://localhost:7175/api/TaskDetails', {
         method: 'POST',
