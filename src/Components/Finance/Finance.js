@@ -43,10 +43,9 @@ const Finance = () => {
 
   return (
     <Container className="mt-5">
-      <h1 className="mb-4">Finance Data</h1>
       <div className="mb-4" style={{ width: "150px" }}>
         <button onClick={handleCreateTask} className="btn btn-primary btn-sm">
-          Create Task
+          Create Finance
         </button>
       </div>
 

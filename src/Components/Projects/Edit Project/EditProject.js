@@ -218,18 +218,18 @@ const EditProject = () => {
           {/* Submit Button */}
           <div className="text-center mt-4">
             <button
+              onClick={handleBack}
+              className="btn btn-danger"
+              style={{ width: "200px", marginRight: "10px" }}
+            >
+              Back
+            </button>
+            <button
               type="submit"
               className="btn btn-primary"
               style={{ width: "200px" }}
             >
               Edit Project
-            </button>
-            <button
-              onClick={handleBack}
-              className="btn btn-danger"
-              style={{ width: "200px", marginLeft: "10px" }}
-            >
-              Back
             </button>
           </div>
         </form>
