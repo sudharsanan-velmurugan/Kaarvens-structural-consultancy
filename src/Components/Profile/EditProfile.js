@@ -165,6 +165,15 @@ const EditProfile = () => {
 
         {/* Buttons for Logout and Save Changes */}
         <div className="text-center d-flex justify-content-center mt-4">
+
+          {/* Logout Button */}
+          <button
+            className="btn btn-danger me-2"
+            style={{ width: '200px' }} // Reduced width for the Logout button
+            onClick={handleBack}
+          >
+            Back
+          </button>
           {/* Save Changes Button */}
           <button
             className="btn btn-primary me-2" // Added margin-end to separate the buttons
@@ -172,15 +181,6 @@ const EditProfile = () => {
             onClick={handleSaveChanges}
           >
             Save Changes
-          </button>
-
-          {/* Logout Button */}
-          <button
-            className="btn btn-danger"
-            style={{ width: '200px' }} // Reduced width for the Logout button
-            onClick={handleBack}
-          >
-            Back
           </button>
         </div>
       </div>

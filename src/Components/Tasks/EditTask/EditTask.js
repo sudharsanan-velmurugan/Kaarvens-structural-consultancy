@@ -248,11 +248,11 @@ const EditTask = () => {
 
           {/* Submit Button */}
           <div className="text-center d-flex justify-content-center mt-4">
-            <button className="btn btn-primary me-2" style={{ width: '200px' }} type='submit'>
-              Edit Task
-            </button>
             <button className="btn btn-secondary me-2" style={{ width: '200px' }} onClick={handleBack}>
               Back
+            </button>
+            <button className="btn btn-primary me-2" style={{ width: '200px' }} type='submit'>
+              Edit Task
             </button>
           </div>
         </form>

@@ -51,6 +51,7 @@ const Users = () => {
       allowOverflow: true,
       button: true
     },
+    
   ]
   
 
