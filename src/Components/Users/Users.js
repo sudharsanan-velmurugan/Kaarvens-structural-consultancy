@@ -7,7 +7,7 @@ import { FaTrash } from "react-icons/fa";
 
 const Users = () => {
 
-   const [search,setSearch]=useState('')
+  const [search,setSearch]=useState('')
   const column = [
     {
       name:'User ID',
