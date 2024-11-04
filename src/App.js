@@ -63,8 +63,6 @@ function AppContent() {
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/createtask" element={<CreateTasks />} />
           <Route path="/edittask/:id" element={<EditTask />} />
-          <Route path="/reset" element={<Reset />} />
-          <Route path="/forgot" element={<Forgot />} />
           <Route path="/users" element={<Users />} />
           <Route path="/editprofile" element={<EditProfile />} />
           <Route path="/profile" element={<Profile />} />
