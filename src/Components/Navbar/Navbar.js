@@ -35,14 +35,9 @@ const Navbar = () => {
             </li>
           </>
         )}
-           {/* Components visible only to User */}
-           {isUserLogin && (
+        {/* Components visible only to User */}
+        {isUserLogin && (
           <>
-            <li>
-              <Link className="nav-elements" to="/projects">
-                <FaThList />
-              </Link>
-            </li>
             <li>
               <Link className="nav-elements" to="/tasks">
                 <FaTasks />
@@ -53,6 +48,11 @@ const Navbar = () => {
         {/* Components visible to any logged-in user (Admin or User) */}
         {(isUserLogin || isAdminLogin) && (
           <>
+            <li>
+              <Link className="nav-elements" to="/projects">
+                <FaThList />
+              </Link>
+            </li>
             <li>
               <Link className="nav-elements" to="/profile">
                 <FaUser />

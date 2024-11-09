@@ -7,6 +7,7 @@ const store =configureStore({
 
         userInfo:UserSlice,
         loginInfo:LoginSlice,
+        
     }
 })
 export default store
