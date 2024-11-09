@@ -6,9 +6,6 @@ import Header from "./Components/Navbar/Header";
 import SignIn from "./Components/Sign In/SignIn";
 import Home from "./Components/Home/Home";
 import About from "./Components/About/About";
-import Reset from "./Components/Reset/Reset";
-import Forgot from "./Components/Forgot/Forgot";
-import Contact from "./Components/Contact/Contact";
 import { Provider } from "react-redux";
 import store from "./Store/UserStore";
 import Users from "./Components/Users/Users";
@@ -59,7 +56,6 @@ function AppContent() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/createproject" element={<CreateProject />} />
           <Route path="/editproject/:id" element={<EditProject />} />
-          <Route path="/contact" element={<Contact />} />
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/createtask" element={<CreateTasks />} />
           <Route path="/edittask/:id" element={<EditTask />} />
