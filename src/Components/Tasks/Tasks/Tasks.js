@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useSelector } from "react-redux";
 import { FaTrash, FaPen } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
-import { useSelector } from "react-redux";
 
 const Tasks = () => {
   const [taskData, setTaskData] = useState([]);
@@ -11,7 +10,17 @@ const Tasks = () => {
   const [task, setTask] = useState("allTasks");
 
   const loggedInUser = useSelector((state) => state.userInfo.loggedInUser);
+  const authorizedUsers = useSelector((state) => state.userInfo.AuthorizedUsers);
   const currentUser = loggedInUser?.firstName;
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Fetch tasks only if user is authorized
+    if (authorizedUsers.includes(loggedInUser.id)) {
+      getTaskData();
+    }
+  }, [authorizedUsers, loggedInUser]);
 
   const getTaskData = () => {
     fetch("https://localhost:7175/api/TaskDetails", {
@@ -35,14 +44,10 @@ const Tasks = () => {
       });
   };
 
-  useEffect(() => {
-    getTaskData();
-  }, []);
-
-  const navigate = useNavigate();
   const handleCreateTask = () => {
     navigate("/createtask");
   };
+
   const handleEdit = (id) => {
     navigate(`/edittask/${id}`);
   };
@@ -60,7 +65,7 @@ const Tasks = () => {
           if (!res.ok) {
             throw new Error(`HTTP error! Status: ${res.status}`);
           }
-          // Re-fetch the task list from the server to stay in sync
+          // Refresh task list after deletion
           getTaskData();
           alert("Task deleted successfully.");
         })
@@ -87,6 +92,16 @@ const Tasks = () => {
           task.assignee.toLowerCase().includes(search.toLowerCase());
   });
 
+  // Check if the user is authorized to view this page
+  if (!authorizedUsers.includes(loggedInUser.id)) {
+    return (
+      <div className="container mt-4">
+        <h2>Access Denied</h2>
+        <p>You are not authorized to view this page. Please log in with an authorized account.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="container mt-4">
       <h2 className="mb-4">Task List</h2>
@@ -95,7 +110,11 @@ const Tasks = () => {
       <div className="d-flex justify-content-between align-items-center mb-4">
         {/* Create Task Button */}
         <div style={{ width: "auto", marginRight: "15px" }}>
-          <button style={{padding:'10px 30px'}} onClick={handleCreateTask} className="btn btn-primary btn-sm">
+          <button
+            style={{ padding: "10px 30px" }}
+            onClick={handleCreateTask}
+            className="btn btn-primary btn-sm"
+          >
             Create Task
           </button>
         </div>
