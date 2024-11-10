@@ -13,10 +13,17 @@ const Users = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    GetUserDetails();
+    // Load user details from the API
+    GetUserDeteils();
+
+    // Load authorized users from Local Storage when the component mounts
+    const storedAuthorizedUsers = JSON.parse(localStorage.getItem("authorizedUsers"));
+    if (storedAuthorizedUsers) {
+      storedAuthorizedUsers.forEach((userId) => dispatch(setAuthorizedUsers(userId)));
+    }
   }, []);
 
-  const GetUserDetails = () => {
+  const GetUserDeteils = () => {
     fetch("https://localhost:7175/api/UserDetails", {
       method: "GET",
       headers: {
@@ -40,7 +47,7 @@ const Users = () => {
   };
 
   const handleDelete = (id) => {
-    if (window.confirm("Are you sure want to delete user?")) {
+    if (window.confirm("Are you sure want to delete user ?")) {
       fetch(`https://localhost:7175/api/UserDetails/${id}`, {
         method: "DELETE",
         headers: {
@@ -52,7 +59,6 @@ const Users = () => {
           if (!res.ok) {
             throw new Error(`HTTP error! Status: ${res.status}`);
           }
-          // Remove deleted user from the UI
           setUserDetails((prev) => prev.filter((user) => user.id !== id));
           alert("User deleted successfully.");
         })
@@ -61,6 +67,20 @@ const Users = () => {
           alert("Unable to delete user: " + error.message);
         });
     }
+  };
+
+  const handleAuthorizationChange = (id) => {
+    if (!authorizedUsers.includes(id)) {
+      dispatch(setAuthorizedUsers(id));
+    } else {
+      dispatch(removeAuthorizedUsers(id));
+    }
+
+    // Update Local Storage with the latest authorized users
+    const updatedAuthorizedUsers = authorizedUsers.includes(id)
+      ? authorizedUsers.filter((userId) => userId !== id)
+      : [...authorizedUsers, id];
+    localStorage.setItem("authorizedUsers", JSON.stringify(updatedAuthorizedUsers));
   };
 
   const columns = [
@@ -94,14 +114,6 @@ const Users = () => {
     },
   ];
 
-  const handleAuthorizationChange = (id) => {
-    if (!authorizedUsers.includes(id)) {
-      dispatch(setAuthorizedUsers(id));
-    } else {
-      dispatch(removeAuthorizedUsers(id));
-    }
-  };
-
   return (
     <section className="users-page-container">
       <div className="text-center m-3 d-flex justify-center gap-1">
@@ -118,11 +130,11 @@ const Users = () => {
         columns={columns}
         data={userDetails.filter((user) =>
           search === ""
-            ? true
+            ? userDetails
             : user.firstName.toLowerCase().includes(search.toLowerCase())
         )}
         selectableRows
-      />
+      ></DataTable>
     </section>
   );
 };
