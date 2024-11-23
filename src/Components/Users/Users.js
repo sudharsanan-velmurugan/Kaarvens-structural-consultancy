@@ -3,26 +3,87 @@ import "./Users.css";
 import DataTable from "react-data-table-component";
 import { IoSearch } from "react-icons/io5";
 import { FaTrash } from "react-icons/fa";
-import { removeAuthorizedUsers, setAuthorizedUsers } from "../../Slice/UserSlice";
+import {
+  removeAuthorizedUsers,
+  setAuthorizedUsers,
+} from "../../Slice/UserSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const Users = () => {
   const [search, setSearch] = useState("");
   const [userDetails, setUserDetails] = useState([]);
-  const authorizedUsers = useSelector((state) => state.userInfo.AuthorizedUsers);
+  const authorizedUsers = useSelector(
+    (state) => state.userInfo.AuthorizedUsers
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
     // Load user details from the API
     GetUserDeteils();
-
-    // Load authorized users from Local Storage when the component mounts
-    const storedAuthorizedUsers = JSON.parse(localStorage.getItem("authorizedUsers"));
-    if (storedAuthorizedUsers) {
-      storedAuthorizedUsers.forEach((userId) => dispatch(setAuthorizedUsers(userId)));
-    }
+    GetAuthorizedUsers();
   }, []);
 
+  const GetAuthorizedUsers = () => {
+    fetch("https://localhost:7175/api/AuthorizedUsersIds", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      mode: "cors",
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+        return res.json(); // Fix: Correctly parse JSON here
+      })
+      .then((data) => {
+        data.forEach((id) => {
+          dispatch(setAuthorizedUsers(id)); // Process each id
+        });
+      })
+      .catch((error) => {
+        console.error("Fetch error:", error);
+        alert("Unable to get data: " + error.message); // Correct placement of catch
+      });
+  };
+
+  const PostAuthIDs = (id) => {
+    const authObj = {
+      AuthId: { id },
+    };
+    fetch("https://localhost:7175/api/AuthorizedUsersIds", {
+      method: "Post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      mode: "cors",
+      body: JSON.stringify(authObj),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error();
+        return res.json();
+      })
+      .catch((error) => {
+        console.error("Fetch error:", error);
+        alert("Unable to Post data: " + error.message);
+      });
+  };
+  const DeleteAuthIds = (id) => {
+    fetch(`https://localhost:7175/api/AuthorizedUsersIds?id=${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      mode: "cors",
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error();
+        return res.json();
+      })
+      .catch((error) => {
+        console.error("Fetch error:", error);
+        alert("Unable to Post data: " + error.message);
+      });
+  };
   const GetUserDeteils = () => {
     fetch("https://localhost:7175/api/UserDetails", {
       method: "GET",
@@ -72,15 +133,11 @@ const Users = () => {
   const handleAuthorizationChange = (id) => {
     if (!authorizedUsers.includes(id)) {
       dispatch(setAuthorizedUsers(id));
+      PostAuthIDs(id);
     } else {
       dispatch(removeAuthorizedUsers(id));
+      DeleteAuthIds(id)
     }
-
-    // Update Local Storage with the latest authorized users
-    const updatedAuthorizedUsers = authorizedUsers.includes(id)
-      ? authorizedUsers.filter((userId) => userId !== id)
-      : [...authorizedUsers, id];
-    localStorage.setItem("authorizedUsers", JSON.stringify(updatedAuthorizedUsers));
   };
 
   const columns = [
